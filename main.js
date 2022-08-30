@@ -1,9 +1,10 @@
 fetch(
-  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=1d0ac0c32b6676f830a158103842dccfe320ff44b529ddc4bee8962d9ca9953c'
+  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=676d60923b2f808452ee2c5de2b409bf17609ff1666b04ac67b7c4f2f540740b'
 )
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
+    console.log('response: ', response)
     console.log(matchList);
     matchList.forEach((match) => {
       let scoreBoard = document.createElement('div');
