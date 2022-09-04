@@ -34,16 +34,21 @@
         </div>
 
         <div class="buttons">
-          <button class="btn" id="league">Лига</button>
-          <button class="btn" id="statistics">Статистика</button>
-          <button class="btn" id="lineups">Состав</button>
+          <button class="custom-btn btn-5" id="league">Лига</button>
+          <button class="custom-btn btn-5" id="statistics">Статистика</button>
+          <button class="custom-btn btn-5" id="lineups">Состав</button>
         </div>
 
         <div class="match-table" id="match-table">
+
           <div class="league none">
             <img id="awayLogo" src="{{league_logo}}" />
             <p id="leagueName">{{league_name}}</p>
             <p id="leagueRound">{{league_round}}</p>
+            <div class="country">
+              <img id="awayLogo" src="{{country_logo}}" />
+              <p>{{country_name}}</p>
+            </div>
           </div>
 
           <div class="lineup none">
@@ -60,11 +65,21 @@
               </ul>
             </div>
           </div>
+
+          <div class="statistics none">
+            <ul>
+              {{#statistics}}
+              <li class="statistics__table"><span>{{home}}</span><span>{{type}}</span><span>{{away}}</span></li>
+              {{/statistics}}
+            </ul>
+          </div>
+
         </div>
 
         <hr />
       </div>
     </template>
+
 
     <script src="mustache.min.js"></script>
     <script src="main.js"></script>

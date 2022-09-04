@@ -17,6 +17,7 @@ fetch(
 
     const btnleague = document.querySelectorAll('#league');
     const btnLineup = document.querySelectorAll('#lineups');
+    const btnStatistics = document.querySelectorAll('#statistics');
 
     btnleague.forEach((btn) => {
       btn.addEventListener('click', showLeague);
@@ -26,10 +27,19 @@ fetch(
       btn.addEventListener('click', showLineup);
     });
 
+    btnStatistics.forEach((btn) => {
+      btn.addEventListener('click', showStatistics);
+    });
+
+    function showStatistics() {
+      const parentStatistics = this.parentElement.nextElementSibling;  
+      const child = parentStatistics.querySelector('.statistics');
+      child.classList.toggle('none'); 
+    }
+
     function showLineup() {
       const parentLineup = this.parentElement.nextElementSibling;
       const child = parentLineup.querySelector('.lineup');
-      console.log('child: ', child)
       child.classList.toggle('none');
     }
 
@@ -38,5 +48,6 @@ fetch(
       const child = parentLeague.querySelector('.league');
       child.classList.toggle('none');
     }
+
   })
   .catch((err) => console.error(err));
