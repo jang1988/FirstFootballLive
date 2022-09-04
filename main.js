@@ -8,89 +8,32 @@ fetch(
     console.log('response: ', response);
     console.log(matchList);
     matchList.forEach((match) => {
-      let scoreBoard = document.createElement('div');
-      scoreBoard.innerHTML = `<div class="container">
-      <h1>ScoreBoard</h1>
+      const templateContent = document.querySelector('template').innerHTML;
 
-      <div class="title-box">
-        <p>Хозяева</p>
-        <p id="elapsed">${match.event_status + "'"}</p>
-        <p>Гости</p>
-      </div>
+      let html = Mustache.render(templateContent, match);
 
-      <div class="title-box">
-        <div class="team">
-          <img id="homeLogo" src="${match.home_team_logo}" />
-          <p id="homeName">${match.event_home_team}</p>
-        </div>
-
-        <p id="goals">${match.event_final_result}</p>
-
-        <div class="team">
-          <img id="awayLogo" src="${match.away_team_logo}" />
-          <p id="awayName">${match.event_away_team}</p>
-        </div>
-      </div>
-
-      
-      <div class="buttons">
-      <button class="btn" id="league">Лига</button>
-      <button class="btn" id="statistics">Статистика</button>
-      <button class="btn" id="lineups">Состав</button>
-      </div>
-
-      <div class="match-table" id="match-table">
-        <div class="league none">
-          <img id="awayLogo" src="${match.league_logo}" />
-          <p id="leagueName">${match.league_name}</p>
-          <p id="leagueRound">${match.league_round}</p>
-        </div>
-
-        <div class="lineups">
-        <ul class="home-time">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <ul class="away-time">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-
-      </div>
-
-      
-      
-      <hr />
-    </div>`;
-      
-      document.body.prepend(scoreBoard);
+      document.body.insertAdjacentHTML('beforeend', html);
     });
 
-    const btns = document.querySelectorAll('#league');
-    btns.forEach((btn) => {
-      btn.addEventListener('click', showDetails);
+    const btnleague = document.querySelectorAll('#league');
+    const btnLineup = document.querySelectorAll('#lineups');
+
+    btnleague.forEach((btn) => {
+      btn.addEventListener('click', showLeague);
     });
 
-    function showDetails() {
+    btnLineup.forEach((btn) => {
+      btn.addEventListener('click', showLineup);
+    });
+
+    function showLineup() {
+      const parentLineup = this.parentElement.nextElementSibling;
+      const child = parentLineup.querySelector('.lineup');
+      console.log('child: ', child)
+      child.classList.toggle('none');
+    }
+
+    function showLeague() {
       const parentLeague = this.parentElement.nextElementSibling;
       const child = parentLeague.querySelector('.league');
       child.classList.toggle('none');

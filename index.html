@@ -9,7 +9,64 @@
   </head>
 
   <body>
-    
+    <template>
+      <div class="container">
+        <h1>ScoreBoard</h1>
+
+        <div class="title-box">
+          <p>Хозяева</p>
+          <p id="elapsed">{{event_status}}'</p>
+          <p>Гости</p>
+        </div>
+
+        <div class="title-box">
+          <div class="team">
+            <img id="homeLogo" src="{{home_team_logo}}" />
+            <p id="homeName">{{event_home_team}}</p>
+          </div>
+
+          <p id="goals">{{event_final_result}}</p>
+
+          <div class="team">
+            <img id="awayLogo" src="{{away_team_logo}}" />
+            <p id="awayName">{{event_away_team}}</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="btn" id="league">Лига</button>
+          <button class="btn" id="statistics">Статистика</button>
+          <button class="btn" id="lineups">Состав</button>
+        </div>
+
+        <div class="match-table" id="match-table">
+          <div class="league none">
+            <img id="awayLogo" src="{{league_logo}}" />
+            <p id="leagueName">{{league_name}}</p>
+            <p id="leagueRound">{{league_round}}</p>
+          </div>
+
+          <div class="lineup none">
+            <div class="lineup__inner">
+              <ul class="home-time">
+                {{#lineups.home_team.starting_lineups}}
+                <li>{{player}}</li>
+                {{/lineups.home_team.starting_lineups}}
+              </ul>
+              <ul class="away-time">
+                {{#lineups.away_team.starting_lineups}}
+                <li>{{player}}</li>
+                {{/lineups.away_team.starting_lineups}}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+      </div>
+    </template>
+
+    <script src="mustache.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

@@ -66,7 +66,8 @@ ul {
 
 .league {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 50px;
 }
 
 .league img {
@@ -78,7 +79,7 @@ ul {
   display: none;
 }
 
-.lineup {
+.lineup__inner{
   display: flex;
   justify-content: space-around;
 }
