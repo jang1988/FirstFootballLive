@@ -12,7 +12,16 @@
   <body>
     <template>
       <div class="container">
-        <h1>ScoreBoard</h1>
+
+        <div class="league__header">
+          <img id="awayLogo" src="{{league_logo}}" />
+          <p id="leagueName">{{league_name}}</p>
+          <p id="leagueRound">{{league_round}}</p>
+          <div class="country">
+            <img id="awayLogo" src="{{country_logo}}" />
+            <p>{{country_name}}</p>
+          </div>
+        </div>
 
         <div class="title-box">
           <p>Хозяева</p>

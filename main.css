@@ -8,7 +8,7 @@
   font-size: 18px;
   color: white;
   text-align: center;
-  text-shadow: 5px 5px 5px black;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
 body {
@@ -26,10 +26,12 @@ ul {
 
 hr {
   border: none; /*Убираем границу для браузера Firefox */
-  box-shadow: 0 5px 5px white, 0 -5px 5px white;
   color: black; /* Цвет линии для остальных браузеров */
   background-color: black; /* Цвет линии для браузера Firefox и Opera */
   height: 2px; /* Толщина линии */
+  width: 80%;
+  margin: 0 auto;
+  
 }
 
 .container {
@@ -48,6 +50,7 @@ hr {
   align-items: center;
   width: 100%;
   font-size: 1.5em;
+  
 }
 .title-box #goals {
   font-size: 1.8em;
@@ -60,9 +63,19 @@ hr {
   width: 54px;
 }
 
+.match-table {
+  background-image: url(./bg-stat.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+}
+
 .buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-around; 
 }
 
 .btn {
@@ -72,13 +85,33 @@ hr {
   padding: 5px;
 }
 
+.custom-btn {
+  text-shadow: none;
+}
+
 .league {
   display: flex;
   justify-content: space-around;
   padding: 20px;
 }
 
+.league__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 15px;
+  padding: 20px;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+}
+
 .league img {
+  height: 54px;
+  width: 54px;
+}
+
+.league__header img {
   height: 54px;
   width: 54px;
 }
@@ -91,6 +124,7 @@ hr {
   display: flex;
   justify-content: space-around;
   padding: 20px;
+
 }
 
 .statistics__table {
@@ -110,7 +144,7 @@ hr {
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  /* position: relative; */
+  position: relative;
   display: inline-block;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);

@@ -32,22 +32,27 @@ fetch(
     });
 
     function showStatistics() {
-      const parentStatistics = this.parentElement.nextElementSibling;  
+      const parentStatistics = this.parentElement.nextElementSibling;
+      parentStatistics.children[0].classList.add('none');
+      parentStatistics.children[1].classList.add('none');
       const child = parentStatistics.querySelector('.statistics');
-      child.classList.toggle('none'); 
+      child.classList.toggle('none');
     }
 
     function showLineup() {
       const parentLineup = this.parentElement.nextElementSibling;
+      parentLineup.children[0].classList.add('none');
+      parentLineup.children[2].classList.add('none');
       const child = parentLineup.querySelector('.lineup');
       child.classList.toggle('none');
     }
 
     function showLeague() {
       const parentLeague = this.parentElement.nextElementSibling;
+      parentLeague.children[1].classList.add('none');
+      parentLeague.children[2].classList.add('none');
       const child = parentLeague.querySelector('.league');
       child.classList.toggle('none');
     }
-
   })
   .catch((err) => console.error(err));
