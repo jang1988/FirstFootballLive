@@ -1,4 +1,3 @@
-// 676d60923b2f808452ee2c5de2b409bf17609ff1666b04ac67b7c4f2f540740b
 fetch(
   'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=676d60923b2f808452ee2c5de2b409bf17609ff1666b04ac67b7c4f2f540740b'
 )
@@ -15,12 +14,12 @@ fetch(
       document.body.insertAdjacentHTML('beforeend', html);
     });
 
-    const btnleague = document.querySelectorAll('#league');
+    const btnGoalScorers = document.querySelectorAll('#league');
     const btnLineup = document.querySelectorAll('#lineups');
     const btnStatistics = document.querySelectorAll('#statistics');
 
-    btnleague.forEach((btn) => {
-      btn.addEventListener('click', showLeague);
+    btnGoalScorers.forEach((btn) => {
+      btn.addEventListener('click', showGoalScorers);
     });
 
     btnLineup.forEach((btn) => {
@@ -47,11 +46,11 @@ fetch(
       child.classList.toggle('none');
     }
 
-    function showLeague() {
+    function showGoalScorers() {
       const parentLeague = this.parentElement.nextElementSibling;
       parentLeague.children[1].classList.add('none');
       parentLeague.children[2].classList.add('none');
-      const child = parentLeague.querySelector('.league');
+      const child = parentLeague.querySelector('.goalscorers');
       child.classList.toggle('none');
     }
   })

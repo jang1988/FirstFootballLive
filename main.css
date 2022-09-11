@@ -50,7 +50,6 @@ hr {
   align-items: center;
   width: 100%;
   font-size: 1.5em;
-  
 }
 .title-box #goals {
   font-size: 1.8em;
@@ -90,12 +89,6 @@ hr {
   text-shadow: none;
 }
 
-.league {
-  display: flex;
-  justify-content: space-around;
-  padding: 20px;
-}
-
 .league__header {
   display: flex;
   align-items: center;
@@ -103,16 +96,10 @@ hr {
   justify-content: space-around;
   gap: 15px;
   padding: 5px;
-  font-size: 10px;
+  font-size: 1em !important;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+  7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
   border-radius: 5px;
-}
-
-.league img {
-  overflow: hidden;
-  height: 54px;
-  width: 54px;
 }
 
 .league__header img {
@@ -135,6 +122,15 @@ hr {
 .statistics__table {
   display: flex;
   justify-content: space-around;
+  padding: 10px;
+}
+
+.goalscorers__inner {
+  display: flex;
+  justify-content: space-around;
+}
+
+.goalscorers__inner li {
   padding: 10px;
 }
 

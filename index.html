@@ -6,13 +6,12 @@
   <title>LiveFootball</title>
   <head>
     <link rel="stylesheet" href="main.css" />
-    <link rel="shortcut icon" type="image/png" href="icon.png"/>
+    <link rel="shortcut icon" type="image/png" href="icon.png" />
   </head>
 
   <body>
     <template>
       <div class="container">
-
         <div class="league__header">
           <img id="awayLogo" src="{{league_logo}}" />
           <p id="leagueName">{{league_name}}</p>
@@ -44,20 +43,24 @@
         </div>
 
         <div class="buttons">
-          <button class="custom-btn btn-5" id="league">Лига</button>
+          <button class="custom-btn btn-5" id="league">Бомбардиры</button>
           <button class="custom-btn btn-5" id="statistics">Статистика</button>
           <button class="custom-btn btn-5" id="lineups">Состав</button>
         </div>
 
         <div class="match-table" id="match-table">
-
-          <div class="league none">
-            <img id="awayLogo" src="{{league_logo}}" />
-            <p id="leagueName">{{league_name}}</p>
-            <p id="leagueRound">{{league_round}}</p>
-            <div class="country">
-              <img id="awayLogo" src="{{country_logo}}" />
-              <p>{{country_name}}</p>
+          <div class="goalscorers none">
+            <div class="goalscorers__inner">
+              <ul class="home-goalscorers">
+                {{#goalscorers}}
+                <li>{{time}}' <span>забил - </span> {{home_scorer}} <br> <span>ассист - </span> {{home_assist}} <br> {{score}}</li>
+                {{/goalscorers}}
+              </ul>
+              <ul class="away-goalscorers">
+                {{#goalscorers}}
+                <li>{{time}}' <span>забил - </span> {{away_scorer}} <br> <span>ассист - </span> {{away_assist}} <br> {{score}}</li>
+                {{/goalscorers}}
+              </ul>
             </div>
           </div>
 
@@ -79,17 +82,17 @@
           <div class="statistics none">
             <ul>
               {{#statistics}}
-              <li class="statistics__table"><span>{{home}}</span><span>{{type}}</span><span>{{away}}</span></li>
+              <li class="statistics__table">
+                <span>{{home}}</span><span>{{type}}</span><span>{{away}}</span>
+              </li>
               {{/statistics}}
             </ul>
           </div>
-
         </div>
 
         <hr />
       </div>
     </template>
-
 
     <script src="mustache.min.js"></script>
     <script src="main.js"></script>
