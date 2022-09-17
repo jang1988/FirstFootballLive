@@ -1,5 +1,5 @@
 fetch(
-  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=676d60923b2f808452ee2c5de2b409bf17609ff1666b04ac67b7c4f2f540740b'
+  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=a2e35aee5529008b5e241999dc3f70a645a51aff94783d571f426d855021f3c5'
 )
   .then((response) => response.json())
   .then((response) => {
