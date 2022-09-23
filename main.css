@@ -192,15 +192,3 @@ hr {
   width: 100%;
   transition: 800ms ease all;
 }
-
-
-body {
-  top: 0 !important;
-}
-.skiptranslate {
-  display: none;
-  height: 0;
-}
-.language__img {
-  cursor: pointer;
-}

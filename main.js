@@ -55,8 +55,3 @@ fetch(
     }
   })
   .catch((err) => console.error(err));
-
-
-
-
-
