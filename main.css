@@ -14,7 +14,7 @@
 
 body {
   height: 100vh;
-  background-image: url(./images/bg.jpg);
+  background-image: url(bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -64,7 +64,7 @@ hr {
 }
 
 .match-table {
-  background-image: url(./images/bg-stat.jpg);
+  background-image: url(./bg-stat.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

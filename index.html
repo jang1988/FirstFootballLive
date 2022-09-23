@@ -6,7 +6,7 @@
   <title>LiveFootball</title>
   <head>
     <link rel="stylesheet" href="main.css" />
-    <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
+    <link rel="shortcut icon" type="image/png" href="icon.png" />
   </head>
 
   <body>
@@ -53,20 +53,12 @@
             <div class="goalscorers__inner">
               <ul class="home-goalscorers">
                 {{#goalscorers}}
-                <li>
-                  {{time}}' <span>забил - </span> {{home_scorer}} <br />
-                  <span>ассист - </span> {{home_assist}} <br />
-                  {{score}}
-                </li>
+                <li>{{time}}' <span>забил - </span> {{home_scorer}} <br> <span>ассист - </span> {{home_assist}} <br> {{score}}</li>
                 {{/goalscorers}}
               </ul>
               <ul class="away-goalscorers">
                 {{#goalscorers}}
-                <li>
-                  {{time}}' <span>забил - </span> {{away_scorer}} <br />
-                  <span>ассист - </span> {{away_assist}} <br />
-                  {{score}}
-                </li>
+                <li>{{time}}' <span>забил - </span> {{away_scorer}} <br> <span>ассист - </span> {{away_assist}} <br> {{score}}</li>
                 {{/goalscorers}}
               </ul>
             </div>
@@ -101,9 +93,8 @@
         <hr />
       </div>
     </template>
-    
+
     <script src="mustache.min.js"></script>
     <script src="main.js"></script>
-
   </body>
 </html>
