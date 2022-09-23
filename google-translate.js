@@ -8,7 +8,7 @@ const googleTranslateConfig = {
   /* Если скрипт не работает на поддомене, 
   раскомментируйте и
   укажите основной домен в свойстве domain */
-  /* domain: "Get-Web.Site" */
+  domain: "jang1988.github"
 };
 
 function TranslateInit() {
