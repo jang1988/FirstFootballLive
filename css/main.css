@@ -106,7 +106,7 @@ hr {
 .league__header img {
   overflow: hidden;
   height: 34px;
-  width: 34px;
+  min-width: 34px;
 }
 
 .none {

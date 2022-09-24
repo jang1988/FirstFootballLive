@@ -6,12 +6,21 @@ fetch(
     const matchList = response.result;
     console.log('response: ', response);
     console.log(matchList);
+
+
+
     matchList.forEach((match) => {
       const templateContent = document.querySelector('template').innerHTML;
 
       let html = Mustache.render(templateContent, match);
 
       document.body.insertAdjacentHTML('beforeend', html);
+      
+      if (!match.league_logo) {
+        document.querySelector('#awayLogo').src = './images/icon.png'
+      }
+      
+
     });
 
     const btnGoalScorers = document.querySelectorAll('#league');
