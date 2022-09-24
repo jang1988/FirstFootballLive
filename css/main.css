@@ -195,10 +195,25 @@ hr {
 }
 
 
-.skiptranslate {
-  display: none;
-  height: 0;
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
 }
-.language__img {
+.goog-tooltip {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important; 
+  box-shadow: none !important;
+}
+
+.VIpgJd-suEOdc.skiptranslate {
+  display: none !important;
+}
+
+.language img {
   cursor: pointer;
 }
