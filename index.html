@@ -3,14 +3,98 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>LiveFootball</title>
   <head>
-    <title>Soccer Live Score</title>
     <link rel="stylesheet" href="main.css" />
+    <link rel="shortcut icon" type="image/png" href="icon.png" />
   </head>
 
   <body>
-    
+    <template>
+      <div class="container">
+        <div class="league__header">
+          <img id="awayLogo" src="{{league_logo}}" />
+          <p id="leagueName">{{league_name}}</p>
+          <p id="leagueRound">{{league_round}}</p>
+          <div class="country">
+            <img id="awayLogo" src="{{country_logo}}" />
+            <p>{{country_name}}</p>
+          </div>
+        </div>
+
+        <div class="title-box">
+          <p>Хозяева</p>
+          <p id="elapsed">{{event_status}}'</p>
+          <p>Гости</p>
+        </div>
+
+        <div class="title-box">
+          <div class="team">
+            <img id="homeLogo" src="{{home_team_logo}}" />
+            <p id="homeName">{{event_home_team}}</p>
+          </div>
+
+          <p id="goals">{{event_final_result}}</p>
+
+          <div class="team">
+            <img id="awayLogo" src="{{away_team_logo}}" />
+            <p id="awayName">{{event_away_team}}</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="custom-btn btn-5" id="league">Бомбардиры</button>
+          <button class="custom-btn btn-5" id="statistics">Статистика</button>
+          <button class="custom-btn btn-5" id="lineups">Состав</button>
+        </div>
+
+        <div class="match-table" id="match-table">
+          <div class="goalscorers none">
+            <div class="goalscorers__inner">
+              <ul class="home-goalscorers">
+                {{#goalscorers}}
+                <li>{{time}}' <span>забил - </span> {{home_scorer}} <br> <span>ассист - </span> {{home_assist}} <br> {{score}}</li>
+                {{/goalscorers}}
+              </ul>
+              <ul class="away-goalscorers">
+                {{#goalscorers}}
+                <li>{{time}}' <span>забил - </span> {{away_scorer}} <br> <span>ассист - </span> {{away_assist}} <br> {{score}}</li>
+                {{/goalscorers}}
+              </ul>
+            </div>
+          </div>
+
+          <div class="lineup none">
+            <div class="lineup__inner">
+              <ul class="home-time">
+                {{#lineups.home_team.starting_lineups}}
+                <li>{{player}}</li>
+                {{/lineups.home_team.starting_lineups}}
+              </ul>
+              <ul class="away-time">
+                {{#lineups.away_team.starting_lineups}}
+                <li>{{player}}</li>
+                {{/lineups.away_team.starting_lineups}}
+              </ul>
+            </div>
+          </div>
+
+          <div class="statistics none">
+            <ul>
+              {{#statistics}}
+              <li class="statistics__table">
+                <span>{{home}}</span><span>{{type}}</span><span>{{away}}</span>
+              </li>
+              {{/statistics}}
+            </ul>
+          </div>
+        </div>
+
+        <hr />
+      </div>
+    </template>
+
+    <script src="mustache.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
