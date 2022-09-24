@@ -214,6 +214,6 @@ hr {
   display: none !important;
 }
 
-.language img {
+.language__img {
   cursor: pointer;
 }
