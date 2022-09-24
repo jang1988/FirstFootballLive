@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+  top: 0 !important;
 }
 
 ul {
@@ -191,4 +192,13 @@ hr {
 .btn-5:hover:after {
   width: 100%;
   transition: 800ms ease all;
+}
+
+
+.skiptranslate {
+  display: none;
+  height: 0;
+}
+.language__img {
+  cursor: pointer;
 }
