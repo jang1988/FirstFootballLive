@@ -8,19 +8,28 @@ fetch(
     console.log(matchList);
 
 
-
     matchList.forEach((match) => {
       const templateContent = document.querySelector('template').innerHTML;
 
       let html = Mustache.render(templateContent, match);
 
-      document.body.insertAdjacentHTML('beforeend', html);
-      
-      if (!match.league_logo) {
-        document.querySelector('#awayLogo').src = './images/icon.png'
-      }
       
 
+      if (!match.league_logo) {
+        
+        match.league_logo = match.country_logo
+
+      }
+
+      if (!match.home_team_logo) {
+
+        match.home_team_logo = match.country_logo
+
+      }
+
+
+      
+      document.body.insertAdjacentHTML('beforeend', html);
     });
 
     const btnGoalScorers = document.querySelectorAll('#league');

@@ -5,7 +5,7 @@
   padding: 0;
   outline: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   color: white;
   text-align: center;
   text-shadow: 1px 1px 2px black, 0 0 0.2em black;
@@ -17,13 +17,17 @@ body {
   background-image: url(../images/bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-attachment: fixed;
   top: 0 !important;
 }
 
 ul {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 hr {
@@ -33,6 +37,64 @@ hr {
   height: 2px; /* Толщина линии */
   width: 80%;
   margin: 0 auto;
+}
+
+.header__top nav{
+  text-align: center;
+}
+
+
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 2em;
+  padding: 0;
+  list-style: none;
+  transform: skew(-25deg);
+}
+
+.menu__item {
+  background: linear-gradient(to top right, #a50044 0%, #004d98 100%);
+  border: 1px solid #000;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  color: #edbb00;
+  font-weight: bolder;
+  transition: all 0.3s linear;
+}
+
+.menu__item:first-child {
+  border-radius: 7px 0 0 7px;
+}
+
+.menu__item:last-child {
+  border-right: none;
+  border-radius: 0 7px 7px 0;
+}
+
+.menu__item:hover {
+  background: linear-gradient(to top left, #a50044 0%, #004d98 100%);
+  color: #db0030;
+}
+.menu__link {
+  display: block;
+  padding: 0.2em;
+  color: inherit;
+  text-decoration: none;
+  transform: skew(25deg);
+}
+
+.language {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+.language__img {
+  cursor: pointer;
+  width: 1em;
 }
 
 .container {
@@ -50,10 +112,10 @@ hr {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 .title-box #goals {
-  font-size: 1.8em;
+  font-size: 1em;
 }
 .team {
   width: 100px;
@@ -76,7 +138,7 @@ hr {
 
 .buttons {
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
 }
 
 .btn {
@@ -97,9 +159,9 @@ hr {
   justify-content: space-around;
   gap: 15px;
   padding: 5px;
-  font-size: 1em !important;
+  font-size: 1em;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-  7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+    7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
   border-radius: 5px;
 }
 
@@ -117,7 +179,6 @@ hr {
   display: flex;
   justify-content: space-around;
   padding: 20px;
-
 }
 
 .statistics__table {
@@ -194,7 +255,6 @@ hr {
   transition: 800ms ease all;
 }
 
-
 .goog-te-banner-frame.skiptranslate {
   display: none !important;
 }
@@ -206,14 +266,109 @@ hr {
 }
 .goog-text-highlight {
   background-color: transparent !important;
-  border: none !important; 
+  border: none !important;
   box-shadow: none !important;
 }
-
 .VIpgJd-suEOdc.skiptranslate {
   display: none !important;
 }
 
-.language__img {
-  cursor: pointer;
+
+
+@media (max-width: 720px) {
+  .menu {
+    display: none;
+  }
+
+  .hamb {
+    display: flex;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .hamb__field {
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .bar {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 6px auto;
+    background-color: #fff;
+    transition: 0.2s;
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/30064.jpg);
+    background-position: center;
+    z-index: 10;
+    display: flex;
+    transition: 0.3s;
+    overflow: hidden;
+  }
+
+   .popup.open {
+    left: 0;
+  }
+
+  .popup .menu {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    overflow: auto;
+    transform: none;
+    z-index: 10;
+  }
+
+  .popup .menu > li {
+    width: 100%;
+  }
+
+  .popup .menu > li > a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    transform: none;
+  }
+
+  .popup .menu > li > a:hover {
+    
+  }
+
+   .hamb__field.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamb__field.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .hamb__field.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  } 
+
+  body.noscroll {
+    overflow: hidden;
+  } 
+}
+
+@media (max-width: 500px) {
+  * {
+    font-size: 1em;
+  }
 }
