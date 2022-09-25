@@ -4,31 +4,21 @@ fetch(
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
-    console.log('response: ', response);
-    console.log(matchList);
+    console.log('matchList: ', matchList);
 
+    const templateContent = document.querySelector('#live').innerHTML;
 
     matchList.forEach((match) => {
-      const templateContent = document.querySelector('template').innerHTML;
-
       let html = Mustache.render(templateContent, match);
 
-      
-
       if (!match.league_logo) {
-        
-        match.league_logo = match.country_logo
-
+        match.league_logo = match.country_logo;
       }
 
       if (!match.home_team_logo) {
-
-        match.home_team_logo = match.country_logo
-
+        match.home_team_logo = match.country_logo;
       }
 
-
-      
       document.body.insertAdjacentHTML('beforeend', html);
     });
 

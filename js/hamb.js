@@ -31,7 +31,7 @@ links.forEach((link) => {
 
 // Закрытие попапа при клике на меню
 function closeOnClick() {
-  //  popup.classList.remove("open");
-  //  hamb.classList.remove("active");
-  //  body.classList.remove("noscroll"); 
+   popup.classList.remove("open");
+   hamb.classList.remove("active");
+   body.classList.remove("noscroll"); 
 }

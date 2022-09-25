@@ -8,13 +8,13 @@
   <head>
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <!--Отключение Google FloC-->
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/fixtures.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
   <body>
     <header class="header">
-      <div class="language">
+      <nav class="language">
         <img
           src="./images/lang/ru.png"
           alt="ru"
@@ -81,14 +81,14 @@
           data-google-lang="sv"
           class="language__img"
         /> -->
-      </div>
+      </nav>
       <div class="header__top">
-        <div class="hamb">
+        <nav class="hamb">
           <div class="hamb__field" id="hamb">
             <span class="bar"></span> <span class="bar"></span>
             <span class="bar"></span>
           </div>
-        </div>
+        </nav>
         <nav>
           <ul class="menu">
             <li class="menu__item">
@@ -98,7 +98,7 @@
               <a class="menu__link" href="#">Игры на равных</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="index.html">Играют сейчас</a>
+              <a class="menu__link" href="index.html#fixtures.html">Играют сейчас</a>
             </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Турнирная тaблица</a>
@@ -122,100 +122,25 @@
     </header>
     <div class="popup" id="popup"></div>
 
-    <template id="live">
-      <div class="container">
-        <div class="league__header">
-          <img id="awayLogo" src="{{league_logo}}" />
-          <p id="leagueName">{{league_name}}</p>
-          <p id="leagueRound">{{league_round}}</p>
-          <div class="country">
-            <img id="awayLogo" src="{{country_logo}}" />
-            <p>{{country_name}}</p>
-          </div>
-        </div>
-
-        <div class="title-box">
-          <p>Хозяева</p>
-          <p id="elapsed">{{event_status}}'</p>
-          <p>Гости</p>
-        </div>
-
-        <div class="title-box">
+    <template id="fixtures">
+      <div class="match-content">
+        <div class="team__inner">
           <div class="team">
             <img id="homeLogo" src="{{home_team_logo}}" />
             <p id="homeName">{{event_home_team}}</p>
           </div>
-
-          <p id="goals">{{event_final_result}}</p>
-
           <div class="team">
             <img id="awayLogo" src="{{away_team_logo}}" />
             <p id="awayName">{{event_away_team}}</p>
           </div>
         </div>
-
-        <div class="buttons">
-          <button class="custom-btn btn-5" id="league">Бомбардиры</button>
-          <button class="custom-btn btn-5" id="statistics">Статистика</button>
-          <button class="custom-btn btn-5" id="lineups">Состав</button>
-        </div>
-
-        <div class="match-table" id="match-table">
-          <div class="goalscorers none">
-            <div class="goalscorers__inner">
-              <ul class="home-goalscorers">
-                {{#goalscorers}}
-                <li>
-                  {{time}}' <span>забил - </span> {{home_scorer}} <br />
-                  <span>ассист - </span> {{home_assist}} <br />
-                  {{score}}
-                </li>
-                {{/goalscorers}}
-              </ul>
-              <ul class="away-goalscorers">
-                {{#goalscorers}}
-                <li>
-                  {{time}}' <span>забил - </span> {{away_scorer}} <br />
-                  <span>ассист - </span> {{away_assist}} <br />
-                  {{score}}
-                </li>
-                {{/goalscorers}}
-              </ul>
-            </div>
-          </div>
-
-          <div class="lineup none">
-            <div class="lineup__inner">
-              <ul class="home-time">
-                {{#lineups.home_team.starting_lineups}}
-                <li>{{player}}</li>
-                {{/lineups.home_team.starting_lineups}}
-              </ul>
-              <ul class="away-time">
-                {{#lineups.away_team.starting_lineups}}
-                <li>{{player}}</li>
-                {{/lineups.away_team.starting_lineups}}
-              </ul>
-            </div>
-          </div>
-
-          <div class="statistics none">
-            <ul>
-              {{#statistics}}
-              <li class="statistics__table">
-                <span>{{home}}</span><span>{{type}}</span><span>{{away}}</span>
-              </li>
-              {{/statistics}}
-            </ul>
-          </div>
-        </div>
-
-        <hr />
+        <p class="result">{{event_final_result}}</p>
       </div>
     </template>
+    <div class="fixtures-wrraper"></div>
 
     <script src="./js/mustache.min.js"></script>
-    <script src="./js/live.js"></script>
+    <script src="./js/fixtures.js"></script>
     <script src="./js/hamb.js"></script>
 
     <script src="./js/google-translate.js"></script>
