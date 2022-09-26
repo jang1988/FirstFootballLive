@@ -5,7 +5,7 @@
   padding: 0;
   outline: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
+  font-size: 20px;
   color: white;
   text-align: center;
   text-shadow: 1px 1px 2px black, 0 0 0.2em black;
@@ -30,8 +30,13 @@ a {
   text-decoration: none;
 }
 
-.header {
-  margin-bottom: 30px;
+hr {
+  border: none; /*Убираем границу для браузера Firefox */
+  color: black; /* Цвет линии для остальных браузеров */
+  background-color: black; /* Цвет линии для браузера Firefox и Opera */
+  height: 2px; /* Толщина линии */
+  width: 80%;
+  margin: 0 auto;
 }
 
 .header__top nav {
@@ -90,75 +95,17 @@ a {
   width: 1em;
 }
 
-.fixtures-wrraper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
 
-.match-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 20em;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
-  border-radius: 5px;
-  padding: 5px;
-}
 
-.team__inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 3px;
-  padding: 10px;
-}
 
-.team {
-  display: flex;
-  align-items: center;
-}
 
-.team img{
-  width: 32px;
-  height: 32px;
-}
 
-.popup-fixtures {
-  display: none;
-  flex-direction: column;
-}
 
-.status {
-  margin-bottom: 10px;
-}
 
-.status span{
-  margin-left: 0;
-}
 
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
-}
-.goog-tooltip {
-  display: none !important;
-}
-.goog-tooltip:hover {
-  display: none !important;
-}
-.goog-text-highlight {
-  background-color: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-.VIpgJd-suEOdc.skiptranslate {
-  display: none !important;
-}
 
-.active {
-  display: flex;
-}
+
+
 
 @media (max-width: 720px) {
   .menu {
@@ -246,11 +193,5 @@ a {
 
   body.noscroll {
     overflow: hidden;
-  }
-}
-
-@media (max-width: 500px) {
-  * {
-    font-size: 1em;
   }
 }

@@ -1,5 +1,6 @@
+// 2022-10-11
 fetch(
-  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=a2e35aee5529008b5e241999dc3f70a645a51aff94783d571f426d855021f3c5'
+  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=96efdc39ee05c5eeddab1d11235d8ba22bbb85d0b3baf9e22a232e3e9c49580b'
 )
   .then((response) => response.json())
   .then((response) => {
