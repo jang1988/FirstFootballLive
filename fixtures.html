@@ -98,7 +98,9 @@
               <a class="menu__link" href="h2h.html">Игры на равных</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="index.html#fixtures.html">Играют сейчас</a>
+              <a class="menu__link" href="index.html#fixtures.html"
+                >Играют сейчас</a
+              >
             </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Турнирная тaблица</a>
@@ -122,9 +124,31 @@
     </header>
     <div class="popup" id="popup"></div>
 
+    <div class="calendar-btn">Календарь</div>
+
+    <div  id="month-calendar" class="hidden">
+      <ul class="month">
+        <li class="prev">&lt</li>
+        <li class="next">&gt</li>
+        <li class="month-name"></li>
+        <li class="year-name"></li>
+      </ul>
+
+      <ul class="weekdays">
+        <li>Пн</li>
+        <li>Вт</li>
+        <li>Ср</li>
+        <li>Чт</li>
+        <li>Пт</li>
+        <li>Сб</li>
+        <li>Вс</li>
+      </ul>
+
+      <ul class="days"></ul>
+    </div>
+
     <template id="fixtures">
       <div class="match-content">
-
         <div class="team__inner">
           <div class="team">
             <img id="homeLogo" src="{{home_team_logo}}" />
@@ -138,23 +162,21 @@
         </div>
 
         <div class="popup-fixtures">
-        <p class="status"><span>начало : </span>{{event_time}}</p>
-        <p class="status"><span>лига : </span>{{league_name}}</p>
-        <p class="status"><span>страна : </span>{{country_name}}</p>
-        <p class="status"><span>раунд : </span>{{league_round}}</p>
-        <p class="status"><span>результат : </span>{{event_final_result}}</p>
-        <p class="status"><span>статус : </span>{{event_status}}</p>
-        <p class="status"><span>стадион : </span>{{event_stadium}}</p>
+          <p class="status"><span>начало : </span>{{event_time}}</p>
+          <p class="status"><span>лига : </span>{{league_name}}</p>
+          <p class="status"><span>страна : </span>{{country_name}}</p>
+          <p class="status"><span>раунд : </span>{{league_round}}</p>
+          <p class="status"><span>результат : </span>{{event_final_result}}</p>
+          <p class="status"><span>статус : </span>{{event_status}}</p>
+          <p class="status"><span>стадион : </span>{{event_stadium}}</p>
         </div>
-      
-
       </div>
     </template>
     <div class="fixtures-wrraper"></div>
 
-    <script src="./js/mustache.min.js"></script>
-    <script src="./js/fixtures.js"></script>
+    
     <script src="./js/hamb.js"></script>
+    <script src="./js/calendar.js"></script><script src="./js/fixtures.js"></script><script src="./js/mustache.min.js"></script>
 
     <script src="./js/google-translate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

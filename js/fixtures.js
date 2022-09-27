@@ -24,3 +24,9 @@ fetch(
     }
   })
   .catch((err) => console.error(err));
+
+  const calBtn = document.querySelector('.calendar-btn')
+
+  calBtn.addEventListener('click', (e) => {
+    e.target.nextElementSibling.classList.toggle('hidden')
+  })

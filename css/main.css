@@ -5,11 +5,12 @@
   padding: 0;
   outline: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   text-align: center;
   text-shadow: 1px 1px 2px black, 0 0 0.2em black;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 body {
