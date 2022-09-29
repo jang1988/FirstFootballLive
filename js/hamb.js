@@ -14,7 +14,7 @@ function hambHandler(e) {
   e.preventDefault();
   // Переключаем стили элементов при клике
   popup.classList.toggle("open");
-  hamb.classList.toggle("active");
+  hamb.classList.toggle("active--close");
   body.classList.toggle("noscroll");
   popup.append(menu);
 }

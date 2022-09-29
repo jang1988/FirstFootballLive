@@ -20,7 +20,7 @@ fetch(
     });
 
     function showStat() {
-      this.children[1].classList.toggle('active');
+      this.children[1].classList.toggle('active__fixtures');
     }
   })
   .catch((err) => console.error(err));

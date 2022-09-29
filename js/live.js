@@ -11,15 +11,6 @@ fetch(
 
     matchList.forEach((match) => {
       let html = Mustache.render(templateContent, match);
-
-      if (!match.league_logo) {
-        match.league_logo = match.country_logo;
-      }
-
-      if (!match.home_team_logo) {
-        match.home_team_logo = match.country_logo;
-      }
-
       document.body.insertAdjacentHTML('beforeend', html);
     });
 

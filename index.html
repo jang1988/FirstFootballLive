@@ -3,17 +3,20 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LiveFootball</title>
+  <title>LiveScore | Home</title>
 
   <head>
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <!--Отключение Google FloC-->
     <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/live.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
   <body>
     <header class="header">
+
       <div class="language">
         <img
           src="./images/lang/ru.png"
@@ -82,6 +85,7 @@
           class="language__img"
         /> -->
       </div>
+
       <div class="header__top">
         <div class="hamb">
           <div class="hamb__field" id="hamb">
@@ -93,9 +97,6 @@
           <ul class="menu">
             <li class="menu__item">
               <a class="menu__link" href="fixtures.html">Календарь игр</a>
-            </li>
-            <li class="menu__item">
-              <a class="menu__link" href="h2h.html">Игры на равных</a>
             </li>
             <li class="menu__item">
               <a class="menu__link" href="index.html">Играют сейчас</a>
@@ -119,11 +120,12 @@
           </ul>
         </nav>
       </div>
+      <div class="popup" id="popup"></div>
     </header>
-    <div class="popup" id="popup"></div>
+    
 
     <template id="live">
-      <div class="container">
+      <div class="live__container">
         <div class="league__header">
           <img id="awayLogo" src="{{league_logo}}" />
           <p id="leagueName">{{league_name}}</p>
@@ -155,9 +157,9 @@
         </div>
 
         <div class="buttons">
-          <button class="custom-btn btn-5" id="league">Бомбардиры</button>
-          <button class="custom-btn btn-5" id="statistics">Статистика</button>
-          <button class="custom-btn btn-5" id="lineups">Состав</button>
+          <button class="custom-btn" id="league">Бомбардиры</button>
+          <button class="custom-btn" id="statistics">Статистика</button>
+          <button class="custom-btn" id="lineups">Состав</button>
         </div>
 
         <div class="match-table" id="match-table">
