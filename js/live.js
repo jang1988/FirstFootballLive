@@ -1,10 +1,11 @@
-// 2022-10-11
+// 2022-10-15
 fetch(
-  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=96efdc39ee05c5eeddab1d11235d8ba22bbb85d0b3baf9e22a232e3e9c49580b'
+  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=d928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4'
 )
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
+    console.log('response: ', response)
     console.log('matchList: ', matchList);
 
     const templateContent = document.querySelector('#live').innerHTML;
