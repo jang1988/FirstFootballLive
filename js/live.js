@@ -1,17 +1,23 @@
+const options = {
+  key: 'd928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4',
+};
+
 fetch(
-  'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=d928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4'
+  `https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${options.key}`
 )
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
-    console.log('response: ', response)
+    console.log('response: ', response);
     console.log('matchList: ', matchList);
 
     const templateContent = document.querySelector('#live').innerHTML;
+    const liveWrraper = document.querySelector('.live-wrraper');
+
 
     matchList.forEach((match) => {
       let html = Mustache.render(templateContent, match);
-      document.body.insertAdjacentHTML('beforeend', html);
+      liveWrraper.insertAdjacentHTML('beforeend', html);
     });
 
     const btnGoalScorers = document.querySelectorAll('#league');

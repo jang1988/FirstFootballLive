@@ -1,5 +1,17 @@
+const options = {
+  key: 'd928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4',
+  day: '1',
+  month: '1',
+  year: '2022',
+};
+
+options.day = new Date().getDate()
+options.month = new Date().getMonth()
+options.year = new Date().getFullYear()
+
+
 fetch(
-  'https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=d928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4&from=2022-09-27&to=2022-09-27'
+  `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${options.key}&from=${options.year}-${options.month}-${options.day}&to=${options.year}-${options.month}-${options.day}`
 )
   .then((response) => response.json())
   .then((response) => {

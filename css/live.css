@@ -1,23 +1,81 @@
+.live-wrraper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 20px;
+}
 .live__container {
   position: relative;
   padding: 16px;
   text-align: center;
   text-transform: uppercase;
   color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  transition: color 10s;
+}
+
+.live__container:hover {
+  box-shadow: 0px 1px 16px 0px rgba(0, 255, 255, 0.7),
+    1px 2px 8px 0px rgba(0, 255, 255, 0.7),
+    2px 4px 8px 0px rgba(0, 255, 255, 0.7),
+    2px 4px 16px 0px rgba(0, 255, 255, 0.7),
+    inset 0px 1px 16px 0px rgba(0, 255, 255, 0.7),
+    inset 1px 2px 8px 0px rgba(0, 255, 255, 0.7),
+    inset 2px 4px 8px 0px rgba(0, 255, 255, 0.7),
+    inset 2px 4px 16px 0px rgba(0, 255, 255, 0.7);
+    border: 1px solid rgba(0, 255, 255, 0.7);
+    transition: all 5s;
+
+}
+
+.live__container::before,
+.live__container::after {
+  box-sizing: inherit;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.live__container::before,
+.live__container::after {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform-origin: center;
+}
+
+.live__container::before {
+  border-top: 1px solid rgba(0, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.7);
+  transform: scale3d(0, 1, 1);
+}
+
+.live__container::after {
+  border-left: 1px solid rgba(0, 255, 255, 0.7);
+  border-right: 1px solid rgba(0, 255, 255, 0.7);
+  transform: scale3d(1, 0, 1);
+}
+.live__container:hover::before,
+.live__container:hover::after {
+  transform: scale3d(1, 1, 1);
+  transition: transform 1s;
 }
 
 .title-box {
   margin: 25px 0;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  width: 100%;
-  font-size: 1em;
+  align-content: center;
 }
+
 .title-box #goals {
-  font-size: 1em;
+  font-size: 1.5em;
 }
 .team {
   width: 100px;
@@ -46,7 +104,7 @@
 
 .buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .custom-btn {
@@ -58,7 +116,8 @@
   border: none;
   text-shadow: none;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  z-index: 99;
 }
 
 .league__header {
@@ -70,7 +129,7 @@
   padding: 5px;
   font-size: 1em;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.1),
-  10px 10px 10px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+    10px 10px 10px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
   background: #222232;
   border-radius: 5px;
 }

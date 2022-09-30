@@ -8,6 +8,7 @@
   <head>
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <!--Отключение Google FloC-->
+    <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/fixtures.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
@@ -95,9 +96,6 @@
               <a class="menu__link" href="fixtures.html">Календарь игр</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="h2h.html">Игры на равных</a>
-            </li>
-            <li class="menu__item">
               <a class="menu__link" href="index.html#fixtures.html"
                 >Играют сейчас</a
               >
@@ -121,17 +119,17 @@
           </ul>
         </nav>
       </div>
+      <div class="popup" id="popup"></div>
     </header>
-    <div class="popup" id="popup"></div>
 
-    <div class="calendar-btn">Календарь</div>
+    <button class="calendar-btn">Календарь</button>
 
     <div id="month-calendar" class="hidden">
       <ul class="month">
-        <li class="prev">&lt</li>
-        <li class="next">&gt</li>
+        <li class="prev">&lt</li>       
         <li class="month-name"></li>
         <li class="year-name"></li>
+        <li class="next">&gt</li>
       </ul>
 
       <ul class="weekdays">
@@ -174,10 +172,10 @@
     </template>
     <div class="fixtures-wrraper"></div>
 
+    <script src="./js/mustache.min.js"></script>
     <script src="./js/hamb.js"></script>
     <script src="./js/calendar.js"></script>
     <script src="./js/fixtures.js"></script>
-    <script src="./js/mustache.min.js"></script>
 
     <script src="./js/google-translate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
