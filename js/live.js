@@ -1,4 +1,3 @@
-// 2022-10-15
 fetch(
   'https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=d928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4'
 )
