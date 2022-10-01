@@ -179,5 +179,6 @@
 @media (max-width: 500px) {
   .live-wrraper {
     display: block;
+    font-size: 14px;
   }
 }

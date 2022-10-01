@@ -1,5 +1,5 @@
 const options = {
-  key: 'd928750011ec703df923ea0a2e33d33c326cebc97aa754818854bda8bdf5dac4',
+  key: '2fa03fe1199351c4797529ca86b95fb6326c7b53c8c601b3b7c3a3d8eec97c1f',
   day: '1',
   month: '1',
   year: '2022',
@@ -16,6 +16,7 @@ fetch(
   .then((response) => response.json())
   .then((response) => {
     const allMatch = response.result;
+    console.log('response: ', response)
     console.log('allMatch: ', allMatch);
 
     const templateContent = document.querySelector('#fixtures').innerHTML;
