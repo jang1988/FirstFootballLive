@@ -28,6 +28,7 @@
     inset 2px 4px 16px 0px rgba(0, 255, 255, 0.7);
     border: 1px solid rgba(0, 255, 255, 0.7);
     transition: all 5s;
+    z-index: 90;
 
 }
 
@@ -117,7 +118,7 @@
   text-shadow: none;
   cursor: pointer;
   margin-bottom: 15px;
-  z-index: 99;
+  z-index: 90;
 }
 
 .league__header {
@@ -172,4 +173,11 @@
 
 .goalscorers__inner li {
   padding: 10px;
+}
+
+
+@media (max-width: 500px) {
+  .live-wrraper {
+    display: block;
+  }
 }
