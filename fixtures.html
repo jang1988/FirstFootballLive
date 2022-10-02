@@ -3,21 +3,19 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LiveScore | Home</title>
+  <title>LiveFootball</title>
 
   <head>
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <!--Отключение Google FloC-->
-
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/live.css" />
+    <link rel="stylesheet" href="./css/fixtures.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
   <body>
     <header class="header">
-      <div class="language">
+      <nav class="language">
         <img
           src="./images/lang/ru.png"
           alt="ru"
@@ -84,22 +82,23 @@
           data-google-lang="sv"
           class="language__img"
         /> -->
-      </div>
-
+      </nav>
       <div class="header__top">
-        <div class="hamb">
+        <nav class="hamb">
           <div class="hamb__field" id="hamb">
             <span class="bar"></span> <span class="bar"></span>
             <span class="bar"></span>
           </div>
-        </div>
+        </nav>
         <nav>
           <ul class="menu">
             <li class="menu__item">
               <a class="menu__link" href="fixtures.html">Календарь игр</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="index.html">Играют сейчас</a>
+              <a class="menu__link" href="index.html#fixtures.html"
+                >Играют сейчас</a
+              >
             </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Турнирная тaблица</a>
@@ -119,104 +118,74 @@
             </li>
           </ul>
         </nav>
+
       </div>
       <div class="popup" id="popup"></div>
     </header>
 
-    <template id="live">
-      <div class="live__container">
-        <div class="league__header">
-          <img id="awayLogo" src="{{league_logo}}" />
-          <p id="leagueName">{{league_name}}</p>
-          <p id="leagueRound">{{league_round}}</p>
-          <div class="country">
-            <img id="awayLogo" src="{{country_logo}}" />
-            <p>{{country_name}}</p>
-          </div>
-        </div>
+    <div class="calendar__wrapper">
+      <div class="date-current">
+        <p id="date"></p>
+        <p id="month"></p>
+        <p id="year"></p>
+      </div>
+      <button class="calendar-btn">Календарь</button>
+    </div>
+    
+    
 
-        <div class="title-box">
-          <p>Хозяева</p>
-          <p id="elapsed">{{event_status}}'</p>
-          <p>Гости</p>
-        </div>
+    <div id="month-calendar" class="hidden">
+      <ul class="month">
+        <li class="prev">&lt</li>       
+        <li class="month-name"></li>
+        <li class="year-name"></li>
+        <li class="next">&gt</li>
+      </ul>
 
-        <div class="title-box">
+      <ul class="weekdays">
+        <li>Пн</li>
+        <li>Вт</li>
+        <li>Ср</li>
+        <li>Чт</li>
+        <li>Пт</li>
+        <li>Сб</li>
+        <li>Вс</li>
+      </ul>
+
+      <ul class="days"></ul>
+    </div>
+
+    <template id="fixtures">
+      <div class="match-content">
+        <div class="team__inner">
           <div class="team">
             <img id="homeLogo" src="{{home_team_logo}}" />
             <p id="homeName">{{event_home_team}}</p>
           </div>
-
-          <p id="goals">{{event_final_result}}</p>
-
+          <span>VS</span>
           <div class="team">
             <img id="awayLogo" src="{{away_team_logo}}" />
             <p id="awayName">{{event_away_team}}</p>
           </div>
         </div>
 
-        <div class="buttons">
-          <button class="custom-btn" id="league">Бомбардиры</button>
-          <button class="custom-btn" id="statistics">Статистика</button>
-          <button class="custom-btn" id="lineups">Состав</button>
-        </div>
-
-        <div class="match-table" id="match-table">
-          <div class="goalscorers none">
-            <div class="goalscorers__inner">
-              <ul class="home-goalscorers">
-                {{#goalscorers}}
-                <li>
-                  {{time}}' <span>забил - </span> {{home_scorer}} <br />
-                  <span>ассист - </span> {{home_assist}} <br />
-                  {{score}}
-                </li>
-                {{/goalscorers}}
-              </ul>
-              <ul class="away-goalscorers">
-                {{#goalscorers}}
-                <li>
-                  {{time}}' <span>забил - </span> {{away_scorer}} <br />
-                  <span>ассист - </span> {{away_assist}} <br />
-                  {{score}}
-                </li>
-                {{/goalscorers}}
-              </ul>
-            </div>
-          </div>
-
-          <div class="lineup none">
-            <div class="lineup__inner">
-              <ul class="home-time">
-                {{#lineups.home_team.starting_lineups}}
-                <li>{{player}}</li>
-                {{/lineups.home_team.starting_lineups}}
-              </ul>
-              <ul class="away-time">
-                {{#lineups.away_team.starting_lineups}}
-                <li>{{player}}</li>
-                {{/lineups.away_team.starting_lineups}}
-              </ul>
-            </div>
-          </div>
-
-          <div class="statistics none">
-            <ul>
-              {{#statistics}}
-              <li class="statistics__table">
-                <span>{{home}}</span><span>{{type}}</span><span>{{away}}</span>
-              </li>
-              {{/statistics}}
-            </ul>
-          </div>
+        <div class="popup-fixtures">
+          <p class="status"><span>начало : </span> {{event_time}}</p><hr>
+          <p class="status"><span>лига : </span> {{league_name}}</p><hr>
+          <p class="status"><span>страна : </span> {{country_name}}</p><hr>
+          <p class="status"><span>раунд : </span> {{league_round}}</p><hr>
+          <p class="status"><span>результат : </span> {{event_final_result}}</p><hr>
+          <p class="status"><span>статус : </span> {{event_status}}</p><hr>
+          <p class="status"><span>стадион : </span> {{event_stadium}}</p><hr>
         </div>
       </div>
     </template>
-    <div class="live-wrraper"></div>
+    <div class="fixtures-wrraper"></div>
 
     <script src="./js/mustache.min.js"></script>
-    <script src="./js/live.js"></script>
     <script src="./js/hamb.js"></script>
+    <script src="./js/calendar.js"></script>
+    <script src="./js/fixtures.js"></script>
 
     <script src="./js/google-translate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>

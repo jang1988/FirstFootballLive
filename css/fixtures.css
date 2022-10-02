@@ -1,0 +1,131 @@
+@import url(main.css);
+@import url(calendar.css);
+
+.calendar__wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.date-current {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.date-current p {
+  width: 75px;
+  padding: 20px 0;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,1);
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.calendar-btn {
+  display: inline-block;
+  width: 150px;
+  height: 40px;
+  background: linear-gradient(90deg, #f2627c 0%, #ff7f68 100%);
+  box-shadow: 0px 4px 20px rgba(249, 113, 114, 0.15);
+  border-radius: 30px;
+  border: none;
+  text-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 25px;
+  font-family: 'Source Sans Pro';
+}
+
+.fixtures-wrraper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 20px;
+}
+
+.match-content {
+  position: relative;
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  border: 1px solid black;
+}
+
+.match-content:hover {
+  box-shadow: 0 0 5px 2px rgba(0,0,0,1);
+  transition: all 1s ease-in;
+  z-index: 90;
+}
+
+.team__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px;
+  color: #fff;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.team img {
+  width: 32px;
+  height: 32px;
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.popup-fixtures {
+  display: none;
+  flex-direction: column;
+  
+}
+
+.status {
+  text-align: left;
+  padding: 2px;
+}
+
+.status span {
+  white-space: nowrap;
+  text-shadow:
+    /* белый свет */ 0 0 1px rgba(0, 255, 255, 0.7),
+    0 0 2px rgba(0, 255, 255, 0.7), 0 0 5px rgba(0, 255, 255, 0.7),
+    /* зеленый свет */ 0 0 11px rgba(0, 255, 255, 0.7),
+    0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.7),
+    0 0 55px rgba(0, 255, 255, 0.7), 0 0 80px rgba(0, 255, 255, 0.7);
+}
+
+.popup-fixtures.active__fixtures {
+  display: flex;
+}
+
+@media (max-width: 500px) {
+  .fixtures-wrraper {
+    font-size: 14px;
+  }
+  .calendar__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+  }
+}
