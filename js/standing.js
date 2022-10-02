@@ -8,7 +8,14 @@ let url = `https://apiv2.allsportsapi.com/football/?&met=Standings&leagueId=3&AP
 fetch(url)
   .then((response) => response.json())
   .then((response) => {
-    const result = response.result
-    console.log(result);
+    const result = response.result;
+    console.dir(result.total);
+
+    const templateContent = document.querySelector('#standing').innerHTML;
+    const standingWrraper = document.querySelector('.standing-wrapper');
     
+    result.total.forEach((match) => {
+      let html = Mustache.render(templateContent, match);
+      standingWrraper.insertAdjacentHTML('beforeend', html);
+    });
   });

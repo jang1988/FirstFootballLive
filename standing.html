@@ -9,7 +9,8 @@
     <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <!--Отключение Google FloC-->
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/standing.css" />
+
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
@@ -96,9 +97,7 @@
               <a class="menu__link" href="fixtures.html">Календарь игр</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="index.html"
-                >Играют сейчас</a
-              >
+              <a class="menu__link" href="index.html">Играют сейчас</a>
             </li>
             <li class="menu__item">
               <a class="menu__link" href="standing.html">Турнирная тaблица</a>
@@ -123,13 +122,50 @@
     </header>
 
     <template id="standing">
-      
+      <!-- <div class="standing__content">
+        <p class="group">{{league_round}}</p>
+        <div class="standing__group">
+        <p id="team">{{standing_team}}</p>
+        <p id="team-standing">{{standing_place_type}}</p>
+        <p id="time-place">{{standing_place}}</p>
+      </div> -->
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th class="league">{{league_round}}</th>
+            <th class="team-text">Командa</th>
+            <th>И</th>
+            <th>В</th>
+            <th>Н</th>
+            <th>П</th>
+            <th>З</th>
+            <th>П</th>
+            <th>О</th>
+            <th>Форма</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="place">{{standing_place}}</td>
+            <td class="team">{{standing_team}}</td>
+            <td class="points">{{standing_P}}</td>
+            <td class="points">{{standing_W}}</td>
+            <td class="points">{{standing_D}}</td>
+            <td class="points">{{standing_L}}</td>
+            <td class="points">{{standing_F}}</td>
+            <td class="points">{{standing_A}}</td>
+            <td class="points">{{standing_PTS}}</td>
+            <td class="form"></td>
+          </tr>
+        </tbody>
+      </table>
     </template>
-    <div class="fixtures-standing"></div>
+
+    <div class="standing-wrapper"></div>
 
     <script src="./js/mustache.min.js"></script>
     <script src="./js/hamb.js"></script>
-    
+
     <script src="./js/standing.js"></script>
 
     <script src="./js/google-translate.js"></script>
