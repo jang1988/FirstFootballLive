@@ -1,6 +1,28 @@
 @import url(main.css);
 @import url(calendar.css);
 
+.calendar__wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.date-current {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.date-current p {
+  width: 75px;
+  padding: 20px 0;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,1);
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+}
+
 .calendar-btn {
   display: inline-block;
   width: 150px;
@@ -34,56 +56,12 @@
   justify-content: center;
   font-size: 14px;
   border: 1px solid black;
-  transition: color 10s;
 }
 
 .match-content:hover {
-  box-shadow: 0px 1px 16px 0px rgba(0, 255, 255, 0.3),
-    1px 2px 8px 0px rgba(0, 255, 255, 0.3),
-    2px 4px 8px 0px rgba(0, 255, 255, 0.3),
-    2px 4px 16px 0px rgba(0, 255, 255, 0.3),
-    inset 0px 1px 16px 0px rgba(0, 255, 255, 0.3),
-    inset 1px 2px 8px 0px rgba(0, 255, 255, 0.3),
-    inset 2px 4px 8px 0px rgba(0, 255, 255, 0.3),
-    inset 2px 4px 16px 0px rgba(0, 255, 255, 0.3);
-  border: 1px solid rgba(0, 255, 255, 0.3);
-  transition: all 2s;
+  box-shadow: 0 0 5px 2px rgba(0,0,0,1);
+  transition: all 1s ease-in;
   z-index: 90;
-}
-
-.match-content::before,
-.match-content::after {
-  box-sizing: inherit;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.match-content::before,
-.match-content::after {
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  transform-origin: center;
-}
-
-.match-content::before {
-  border-top: 1px solid rgba(0, 255, 255, 0.7);
-  border-bottom: 1px solid rgba(0, 255, 255, 0.7);
-  transform: scale3d(0, 1, 1);
-}
-
-.match-content::after {
-  border-left: 1px solid rgba(0, 255, 255, 0.7);
-  border-right: 1px solid rgba(0, 255, 255, 0.7);
-  transform: scale3d(1, 0, 1);
-}
-.match-content:hover::before,
-.match-content:hover::after {
-  transform: scale3d(1, 1, 1);
-  transition: transform 1s;
 }
 
 .team__inner {
@@ -118,6 +96,7 @@
 .popup-fixtures {
   display: none;
   flex-direction: column;
+  
 }
 
 .status {
@@ -142,5 +121,11 @@
 @media (max-width: 500px) {
   .fixtures-wrraper {
     font-size: 14px;
+  }
+  .calendar__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
   }
 }

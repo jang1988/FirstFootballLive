@@ -39,16 +39,11 @@
   position: absolute;
   width: 100%;
   height: 100%;
-}
-
-.live__container::before,
-.live__container::after {
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
   transform-origin: center;
 }
+
 
 .live__container::before {
   border-top: 1px solid rgba(0, 255, 255, 0.7);
