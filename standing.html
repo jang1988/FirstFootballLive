@@ -120,28 +120,19 @@
       </div>
       <div class="popup" id="popup"></div>
     </header>
-
     <template id="standing">
-      <!-- <div class="standing__content">
-        <p class="group">{{league_round}}</p>
-        <div class="standing__group">
-        <p id="team">{{standing_team}}</p>
-        <p id="team-standing">{{standing_place_type}}</p>
-        <p id="time-place">{{standing_place}}</p>
-      </div> -->
       <table class="standings-table">
         <thead>
           <tr>
-            <th class="league">{{league_round}}</th>
-            <th class="team-text">Командa</th>
-            <th>И</th>
-            <th>В</th>
-            <th>Н</th>
-            <th>П</th>
-            <th>З</th>
-            <th>П</th>
-            <th>О</th>
-            <th>Форма</th>
+          <th class="group">{{league_round}}</th>
+          <th>Командa</th>
+          <th>И</th>
+          <th>В</th>
+          <th>Н</th>
+          <th>П</th>
+          <th>З</th>
+          <th>П</th>
+          <th>О</th>
           </tr>
         </thead>
         <tbody>
@@ -155,7 +146,6 @@
             <td class="points">{{standing_F}}</td>
             <td class="points">{{standing_A}}</td>
             <td class="points">{{standing_PTS}}</td>
-            <td class="form"></td>
           </tr>
         </tbody>
       </table>

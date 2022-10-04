@@ -1,33 +1,30 @@
 const key = '2fa03fe1199351c4797529ca86b95fb6326c7b53c8c601b3b7c3a3d8eec97c1f';
-let day = '1';
-let month = '1';
-let year = '2022';
-let url = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${key}&from=${year}-${month}-${day}&to=${year}-${month}-${day}`;
-
-day = new Date().getDate();
-month = new Date().getMonth();
-year = new Date().getFullYear();
+let day = new Date().getDate();
+let month = new Date().getMonth() + 1;
+let year = new Date().getFullYear();
+let url = `https://apiv2.allsportsapi.com/football/?met=Fixtures&timezone=Europe/Kiev&APIkey=${key}&from=${year}-${month}-${day}&to=${year}-${month}-${day}`;
+console.log('url: ', url)
 
 const calBtn = document.querySelector('.calendar-btn');
 const calendar = document.querySelector('#month-calendar');
 console.log(day);
 
+// DATE
 const dateNumber = document.querySelector('#date');
 dateNumber.textContent = day;
 const monthNumber = document.querySelector('#month');
 monthNumber.textContent = month;
 const yearNumber = document.querySelector('#year');
 yearNumber.textContent = year;
+// DATE END
 
+// LISENER
 calendar.lastElementChild.addEventListener('click', (e) => {
   if (e.target.textContent) {
     e.target.style.color = getRandomColor();
-
-    day = e.target.textContent;
-    console.log('day: ', day);
-    fetch(
-      `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${key}&from=${year}-${month}-${day}&to=${year}-${month}-${day}`
-    )
+    day = e.target.textContent
+    url = `https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=${key}&from=${year}-${month}-${day}&to=${year}-${month}-${day}`;
+    fetch(url)
       .then((response) => response.json())
       .then((response) => {
         const allMatch = response.result;
@@ -59,6 +56,7 @@ calendar.lastElementChild.addEventListener('click', (e) => {
           this.children[1].classList.toggle('active__fixtures');
         }
 
+        console.log('urlwww: ', url)
         console.log('day: ', day);
       })
       .catch((err) => console.error(err));
@@ -68,6 +66,7 @@ calendar.lastElementChild.addEventListener('click', (e) => {
 calBtn.addEventListener('click', (e) => {
   e.target.parentElement.nextElementSibling.classList.toggle('hidden');
 });
+// LISENER END
 
 // LIVE FETCH
 fetch(url)
@@ -93,15 +92,18 @@ fetch(url)
     function showStat() {
       this.children[1].classList.toggle('active__fixtures');
     }
+console.log(url)
+
   })
   .catch((err) => console.error(err));
 // LIVE FETCH END
 
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
   return color;
 }
+console.log(url)
