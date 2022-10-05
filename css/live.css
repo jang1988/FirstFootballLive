@@ -26,10 +26,9 @@
     inset 1px 2px 8px 0px rgba(0, 255, 255, 0.7),
     inset 2px 4px 8px 0px rgba(0, 255, 255, 0.7),
     inset 2px 4px 16px 0px rgba(0, 255, 255, 0.7);
-    border: 1px solid rgba(0, 255, 255, 0.7);
-    transition: all 5s;
-    z-index: 90;
-
+  border: 1px solid rgba(0, 255, 255, 0.7);
+  transition: all 5s;
+  z-index: 50;
 }
 
 .live__container::before,
@@ -43,7 +42,6 @@
   left: 0;
   transform-origin: center;
 }
-
 
 .live__container::before {
   border-top: 1px solid rgba(0, 255, 255, 0.7);
@@ -143,6 +141,13 @@
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
+  cursor: pointer;
+  z-index: 90;
+}
+
+.country {
+  cursor: pointer;
+  z-index: 90;
 }
 
 .none {
@@ -169,7 +174,6 @@
 .goalscorers__inner li {
   padding: 10px;
 }
-
 
 @media (max-width: 500px) {
   .live-wrraper {

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/live.css" />
+    <link rel="stylesheet" href="./css/card.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
@@ -102,7 +103,7 @@
               <a class="menu__link" href="index.html">Играют сейчас</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="standing.html">Турнирная тaблица</a>
+              <a class="menu__link" href="#">Турнирная тaблица</a>
             </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Команды</a>
@@ -126,11 +127,19 @@
     <template id="live">
       <div class="live__container">
         <div class="league__header">
-          <img id="awayLogo" src="{{league_logo}}" />
-          <p id="leagueName">{{league_name}}</p>
-          <p id="leagueRound">{{league_round}}</p>
+          <img
+            class="ligaLogo"
+            src="{{league_logo}}"
+            data-liga-id="{{league_key}}"
+          />
+          <p class="leagueName">{{league_name}}</p>
+          <p class="leagueRound">{{league_round}}</p>
           <div class="country">
-            <img id="awayLogo" src="{{country_logo}}" />
+            <img
+              class="countryLogo"
+              src="{{country_logo}}"
+              data-country-id="{{event_country_key}}"
+            />
             <p>{{country_name}}</p>
           </div>
         </div>
@@ -213,6 +222,13 @@
       </div>
     </template>
     <div class="live-wrraper"></div>
+
+    <template id="country">
+      <div class="country__container" style="background-image: url({{league_logo}})">
+        <p>{{league_name}}</p>
+      </div>
+    </template>
+    <div class="country-wrraper"></div>
 
     <script src="./js/mustache.min.js"></script>
     <script src="./js/live.js"></script>

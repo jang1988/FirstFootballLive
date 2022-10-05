@@ -1,10 +1,6 @@
-const options = {
-  key: '2fa03fe1199351c4797529ca86b95fb6326c7b53c8c601b3b7c3a3d8eec97c1f',
-};
+let key = '2fa03fe1199351c4797529ca86b95fb6326c7b53c8c601b3b7c3a3d8eec97c1f';
 
-fetch(
-  `https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${options.key}`
-)
+fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
@@ -13,7 +9,6 @@ fetch(
 
     const templateContent = document.querySelector('#live').innerHTML;
     const liveWrraper = document.querySelector('.live-wrraper');
-
 
     matchList.forEach((match) => {
       let html = Mustache.render(templateContent, match);
@@ -58,6 +53,53 @@ fetch(
       parentLeague.children[2].classList.add('none');
       const child = parentLeague.querySelector('.goalscorers');
       child.classList.toggle('none');
+    }
+    return response;
+  })
+  .then((response) => {
+    console.log('response: ', response);
+    const imgLogo = document.querySelectorAll('.ligaLogo');
+    const countryLogo = document.querySelectorAll('.country');
+
+    countryLogo.forEach((logocount) => {
+      logocount.addEventListener('click', showCountry);
+    });
+
+    imgLogo.forEach((logoLiga) => {
+      logoLiga.addEventListener('click', showLiga);
+    });
+
+    function showCountry() {
+      const countryId = this.firstElementChild.getAttribute('data-country-id');
+      console.log('countryId: ', countryId);
+      fetch(
+        `https://apiv2.allsportsapi.com/football/?met=Leagues&countryId=${countryId}&APIkey=${key}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log('response: ', response.result);
+          document.querySelector('.live-wrraper').innerHTML = ''
+
+          let countryContent = document.querySelector('#country').innerHTML
+          let countryWrraper = document.querySelector('.country-wrraper')
+
+          response.result.forEach((match) => {
+            let html = Mustache.render(countryContent, match);
+            countryWrraper.insertAdjacentHTML('beforeend', html);
+          });
+        });
+    }
+
+    function showLiga() {
+      const ligaId = this.getAttribute('data-liga-id');
+      console.log('ligaId: ', ligaId);
+      fetch(
+        `https://apiv2.allsportsapi.com/football/?&met=Standings&leagueId=${ligaId}&APIkey=${key}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log('response: ', response);
+        });
     }
   })
   .catch((err) => console.error(err));

@@ -23,7 +23,7 @@ let nowDate = new Date(),
     'декабрь',
 ];
 
-// let curDate = nowDate.setMonth(nowDate.getMonth() - 1);
+let curDate = nowDate.setMonth(nowDate.getMonth() - 1);
 
 
 function setMonthCalendar(year, month) {
