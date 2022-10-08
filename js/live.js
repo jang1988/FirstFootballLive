@@ -4,7 +4,6 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
-    console.log('response: ', response);
     console.log('matchList: ', matchList);
 
     const templateContent = document.querySelector('#live').innerHTML;
@@ -57,7 +56,6 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
     return response;
   })
   .then((response) => {
-    console.log('response: ', response);
     const imgLogo = document.querySelectorAll('.ligaLogo');
     const countryLogo = document.querySelectorAll('.country');
 
@@ -98,7 +96,17 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log('response: ', response);
+          const total = response.result.total
+          console.log('total: ', total)
+          document.querySelector('.live-wrraper').innerHTML = ''
+
+          let teamContent = document.querySelector('#team').innerHTML
+          let teamWrraper = document.querySelector('.team-wrraper')
+
+          total.forEach((team) => {
+            let html = Mustache.render(teamContent, team);
+            teamWrraper.insertAdjacentHTML('beforeend', html);
+          });
         });
     }
   })

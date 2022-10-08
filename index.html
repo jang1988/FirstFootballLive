@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/live.css" />
     <link rel="stylesheet" href="./css/card.css" />
+    <link rel="stylesheet" href="./css/liga.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
@@ -224,11 +225,48 @@
     <div class="live-wrraper"></div>
 
     <template id="country">
-      <div class="country__container" style="background-image: url({{league_logo}})">
+      <div
+        class="country__container"
+        style="background-image: url({{league_logo}})"
+      >
         <p>{{league_name}}</p>
       </div>
     </template>
     <div class="country-wrraper"></div>
+
+    <template id="team">
+      <table class="resp-tab">
+        <thead>
+          <tr>
+            <th>место</th>
+            <th>команда</th>
+            <th>И</th>
+            <th>В</th>
+            <th>Н</th>
+            <th>П</th>
+            <th>З</th>
+            <th>П</th>
+            <th>+/-</th>
+            <th>О</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span>место в лиге</span>{{standing_place}}</td>
+            <td><span>команда</span>{{standing_team}}</td>
+            <td><span>игр</span>{{standing_P}}</td>
+            <td><span>выгр</span>{{standing_W}}</td>
+            <td><span>ничья</span>{{standing_D}}</td>
+            <td><span>проиг</span>{{standing_L}}</td>
+            <td><span>забито</span>{{standing_F}}</td>
+            <td><span>пропущ</span>{{standing_A}}</td>
+            <td><span>+/-</span>{{standing_GD}}</td>
+            <td><span>ОЧКИ</span>{{standing_PTS}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </template>
+    <div class="team-wrraper"></div>
 
     <script src="./js/mustache.min.js"></script>
     <script src="./js/live.js"></script>
