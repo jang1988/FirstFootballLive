@@ -1,4 +1,4 @@
-let key = '2fa03fe1199351c4797529ca86b95fb6326c7b53c8c601b3b7c3a3d8eec97c1f';
+let key = '57a54d512c0a0bbb96ddd1897a2028d0e53ad032b6ca78df925504dbf0107d26';
 
 fetch(
   `https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=${key}`
@@ -11,7 +11,6 @@ fetch(
     
     const templateContent = document.querySelector('#liga-main').innerHTML;
     const ligaWrraper = document.querySelector('.liga-main-wrraper');
-    console.log('ligaWrraper: ', ligaWrraper)
 
     allLiges.forEach((liga) => {
       let html = Mustache.render(templateContent, liga);

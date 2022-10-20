@@ -215,13 +215,16 @@
           </div>
 
           <div class="statistics none">
-            <ul>
-              {{#statistics}}
-              <li class="statistics__table">
-                <span>{{home}}</span><span>{{type}}</span><span>{{away}}</span>
-              </li>
-              {{/statistics}}
-            </ul>
+            <div class="statistics__inner">
+              <ul>
+                {{#statistics}}
+                <li class="statistics__table">
+                  <span>{{home}}</span><span>{{type}}</span
+                  ><span>{{away}}</span>
+                </li>
+                {{/statistics}}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
