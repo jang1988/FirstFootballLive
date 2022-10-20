@@ -126,7 +126,6 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log('response: ', response.result[0].coaches[0].coach_name)
           const teamStat = response.result
           document.querySelector('.live-wrraper').innerHTML = '';
 
@@ -134,7 +133,6 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
           let teamWrraper = document.querySelector('.team-wrapper');
 
           teamStat.forEach((team) => {
-            console.log('team: ', team)
             let html = Mustache.render(teamContent, team);
             teamWrraper.insertAdjacentHTML('beforeend', html);
           });
