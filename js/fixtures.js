@@ -1,13 +1,13 @@
-const key = '2fa03fe1199351c4797529ca86b95fb6326c7b53c8c601b3b7c3a3d8eec97c1f';
+const key = '57a54d512c0a0bbb96ddd1897a2028d0e53ad032b6ca78df925504dbf0107d26';
 let day = new Date().getDate();
 let month = new Date().getMonth() + 1;
 let year = new Date().getFullYear();
 let url = `https://apiv2.allsportsapi.com/football/?met=Fixtures&timezone=Europe/Kiev&APIkey=${key}&from=${year}-${month}-${day}&to=${year}-${month}-${day}`;
-console.log('url: ', url);
+
 
 const calBtn = document.querySelector('.calendar-btn');
 const calendar = document.querySelector('#month-calendar');
-console.log(day);
+
 
 // DATE
 const dateNumber = document.querySelector('#date');
@@ -17,6 +17,34 @@ monthNumber.textContent = month;
 const yearNumber = document.querySelector('#year');
 yearNumber.textContent = year;
 // DATE END
+
+// LIVE FETCH
+fetch(url)
+  .then((response) => response.json())
+  .then(function (response) {
+    const allMatch = response.result;
+    console.log('response: ', response);
+    console.log('allMatch: ', allMatch);
+
+    const templateContent = document.querySelector('#fixtures').innerHTML;
+    const fixturesWrraper = document.querySelector('.fixtures-wrraper');
+
+    allMatch.forEach((match) => {
+      let html = Mustache.render(templateContent, match);
+      fixturesWrraper.insertAdjacentHTML('beforeend', html);
+    });
+
+    const matchContent = document.querySelectorAll('.match-content');
+    matchContent.forEach((div) => {
+      div.addEventListener('click', showStat);
+    });
+
+    function showStat() {
+      this.children[1].classList.toggle('active__fixtures');
+    }
+  })
+  .catch((err) => console.error(err));
+// LIVE FETCH END
 
 // LISENER
 
@@ -57,8 +85,6 @@ calendar.lastElementChild.addEventListener('click', (e) => {
           this.children[1].classList.toggle('active__fixtures');
         }
 
-        console.log('urlwww: ', url);
-        console.log('day: ', day);
       })
       .catch((err) => console.error(err));
   }
@@ -68,35 +94,6 @@ calBtn.addEventListener('click', (e) => {
   e.target.parentElement.nextElementSibling.classList.toggle('hidden');
 });
 // LISENER END
-
-// LIVE FETCH
-fetch(url)
-  .then((response) => response.json())
-  .then(function (response) {
-    const allMatch = response.result;
-    console.log('response: ', response);
-    console.log('allMatch: ', allMatch);
-
-    const templateContent = document.querySelector('#fixtures').innerHTML;
-    const fixturesWrraper = document.querySelector('.fixtures-wrraper');
-
-    allMatch.forEach((match) => {
-      let html = Mustache.render(templateContent, match);
-      fixturesWrraper.insertAdjacentHTML('beforeend', html);
-    });
-
-    const matchContent = document.querySelectorAll('.match-content');
-    matchContent.forEach((div) => {
-      div.addEventListener('click', showStat);
-    });
-
-    function showStat() {
-      this.children[1].classList.toggle('active__fixtures');
-    }
-    console.log(url);
-  })
-  .catch((err) => console.error(err));
-// LIVE FETCH END
 
 function getRandomColor() {
   let letters = '0123456789ABCDEF';

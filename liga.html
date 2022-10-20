@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Календарь</title>
-
   <head>
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
-    <!--Отключение Google FloC-->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/fixtures.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/liga-main.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
+    <title>Liga</title>
   </head>
-
   <body>
     <header class="header">
-      <nav class="language">
+      <div class="language">
         <img
           src="./images/lang/ru.png"
           alt="ru"
@@ -82,26 +79,25 @@
           data-google-lang="sv"
           class="language__img"
         /> -->
-      </nav>
+      </div>
+
       <div class="header__top">
-        <nav class="hamb">
+        <div class="hamb">
           <div class="hamb__field" id="hamb">
             <span class="bar"></span> <span class="bar"></span>
             <span class="bar"></span>
           </div>
-        </nav>
+        </div>
         <nav>
           <ul class="menu">
             <li class="menu__item">
               <a class="menu__link" href="fixtures.html">Календарь игр</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="index.html"
-                >Играют сейчас</a
-              >
+              <a class="menu__link" href="index.html">Играют сейчас</a>
             </li>
             <li class="menu__item">
-              <a class="menu__link" href="liga.html">Лиги</a>
+              <a class="menu__link" href="#">Турнирная тaблица</a>
             </li>
             <li class="menu__item">
               <a class="menu__link" href="#">Команды</a>
@@ -118,75 +114,30 @@
             </li>
           </ul>
         </nav>
-
       </div>
       <div class="popup" id="popup"></div>
     </header>
 
-    <div class="calendar__wrapper">
-      <div class="date-current">
-        <p id="date"></p>
-        <p id="month"></p>
-        <p id="year"></p>
-      </div>
-      <button class="calendar-btn">Календарь</button>
-    </div>
-    
-    <div id="month-calendar" class="hidden">
-      <ul class="month">
-        <li class="prev">&lt</li>       
-        <li class="month-name"></li>
-        <li class="year-name"></li>
-        <li class="next">&gt</li>
-      </ul>
-
-      <ul class="weekdays">
-        <li>Пн</li>
-        <li>Вт</li>
-        <li>Ср</li>
-        <li>Чт</li>
-        <li>Пт</li>
-        <li>Сб</li>
-        <li>Вс</li>
-      </ul>
-
-      <ul class="days"></ul>
-    </div>
-
-    <template id="fixtures">
-      <div class="match-content">
-        <div class="team__inner">
-          <div class="team">
-            <img id="homeLogo" src="{{home_team_logo}}" />
-            <p id="homeName">{{event_home_team}}</p>
-          </div>
-          <span>VS</span>
-          <div class="team">
-            <img id="awayLogo" src="{{away_team_logo}}" />
-            <p id="awayName">{{event_away_team}}</p>
-          </div>
+    <template id="liga-main">
+      <div
+        class="liga"
+        data-league-key="{{league_key}}"
+        data-country-key="{{country_key}}"
+      >
+        <div class="liga__inner">
+          <p class="liga__name">{{league_name}}</p>
+          <img class="liga__logo" src="{{league_logo}}" alt="" />
         </div>
-
-        <div class="popup-fixtures">
-          <p class="status"><span>начало : </span> {{event_time}}</p><hr>
-          <p class="status"><span>лига : </span> {{league_name}}</p><hr>
-          <p class="status"><span>страна : </span> {{country_name}}</p><hr>
-          <p class="status"><span>раунд : </span> {{league_round}}</p><hr>
-          <p class="status"><span>результат : </span> {{event_final_result}}</p><hr>
-          <p class="status"><span>статус : </span> {{event_status}}</p><hr>
-          <p class="status"><span>стадион : </span> {{event_stadium}}</p><hr>
+        <div class="country__inner">
+          <p class="liga__country">{{country_name}}</p>
+          <img class="liga-country__logo" src="{{country_logo}}" alt="" />
         </div>
       </div>
     </template>
-    <div class="fixtures-wrraper"></div>
+    <div class="liga-main-wrraper"></div>
 
     <script src="./js/mustache.min.js"></script>
     <script src="./js/hamb.js"></script>
-    <script src="./js/calendar.js"></script>
-    <script src="./js/fixtures.js"></script>
-
-    <script src="./js/google-translate.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+    <script src="./js/liga-main.js"></script>
   </body>
 </html>

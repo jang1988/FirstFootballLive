@@ -1,0 +1,13 @@
+.liga-main-wrraper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.liga {
+  width: 100px;
+}
+
+.liga img {
+  width: 20px;
+}
