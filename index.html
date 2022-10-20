@@ -1,16 +1,320 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>LiveScore | Home</title>
+
   <head>
-    <title>Soccer Live Score</title>
-    <link rel="stylesheet" href="main.css" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <!--Отключение Google FloC-->
+
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/live.css" />
+    <link rel="stylesheet" href="./css/card.css" />
+    <link rel="stylesheet" href="./css/liga.css" />
+    <link rel="stylesheet" href="./css/team-stat.css" />
+    <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
   <body>
-    
-    <script src="main.js"></script>
+    <header class="header">
+      <div class="language">
+        <img
+          src="./images/lang/ru.png"
+          alt="ru"
+          data-google-lang="ru"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/usa.png"
+          alt="en"
+          data-google-lang="en"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/ger.png"
+          alt="de"
+          data-google-lang="de"
+          class="language__img"
+        />
+        <!-- <img
+          src="./images/lang/lang__fr.png"
+          alt="fr"
+          data-google-lang="fr"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__pt.png"
+          alt="pt"
+          data-google-lang="pt"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__es.png"
+          alt="es"
+          data-google-lang="es"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__it.png"
+          alt="it"
+          data-google-lang="it"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__zh.png"
+          alt="zh"
+          data-google-lang="zh-CN"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__ar.png"
+          alt="ar"
+          data-google-lang="ar"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__nl.png"
+          alt="nl"
+          data-google-lang="nl"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__sv.png"
+          alt="sv"
+          data-google-lang="sv"
+          class="language__img"
+        /> -->
+      </div>
+
+      <div class="header__top">
+        <div class="hamb">
+          <div class="hamb__field" id="hamb">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+        <nav>
+          <ul class="menu">
+            <li class="menu__item">
+              <a class="menu__link" href="fixtures.html">Календарь игр</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="index.html">Играют сейчас</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="liga.html">Лиги</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Команды</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Игроки</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Команды</a>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="#">Шансы</a></li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Вероятности</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="popup" id="popup"></div>
+    </header>
+
+    <div id="alarm-box" class="hidden">
+      <p id="alarm-text">Матчи не найдены</p>
+    </div>
+
+    <template id="live">
+      <div class="live__container">
+        <div class="league__header">
+          <img
+            class="ligaLogo"
+            src="{{league_logo}}"
+            data-liga-id="{{league_key}}"
+          />
+          <p class="leagueName">{{league_name}}</p>
+          <p class="leagueRound">{{league_round}}</p>
+          <div class="country">
+            <img
+              class="countryLogo"
+              src="{{country_logo}}"
+              data-country-id="{{event_country_key}}"
+            />
+            <p>{{country_name}}</p>
+          </div>
+        </div>
+
+        <div class="title-box">
+          <p>Хозяева</p>
+          <p id="elapsed">{{event_status}}'</p>
+          <p>Гости</p>
+        </div>
+
+        <div class="title-box">
+          <div class="team">
+            <img
+              id="homeLogo"
+              src="{{home_team_logo}}"
+              data-team-id="{{home_team_key}}"
+            />
+            <p id="homeName">{{event_home_team}}</p>
+          </div>
+
+          <p id="goals">{{event_final_result}}</p>
+
+          <div class="team">
+            <img
+              id="awayLogo"
+              src="{{away_team_logo}}"
+              data-team-id="{{away_team_key}}"
+            />
+            <p id="awayName">{{event_away_team}}</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button class="custom-btn" id="league">Бомбардиры</button>
+          <button class="custom-btn" id="statistics">Статистика</button>
+          <button class="custom-btn" id="lineups">Состав</button>
+        </div>
+
+        <div class="match-table" id="match-table">
+          <div class="goalscorers none">
+            <div class="goalscorers__inner">
+              <ul class="home-goalscorers">
+                {{#goalscorers}}
+                <li>
+                  {{time}}' <span>забил - </span> {{home_scorer}} <br />
+                  <span>ассист - </span> {{home_assist}} <br />
+                  {{score}}
+                </li>
+                {{/goalscorers}}
+              </ul>
+              <ul class="away-goalscorers">
+                {{#goalscorers}}
+                <li>
+                  {{time}}' <span>забил - </span> {{away_scorer}} <br />
+                  <span>ассист - </span> {{away_assist}} <br />
+                  {{score}}
+                </li>
+                {{/goalscorers}}
+              </ul>
+            </div>
+          </div>
+
+          <div class="lineup none">
+            <div class="lineup__inner">
+              <ul class="home-time">
+                {{#lineups.home_team.starting_lineups}}
+                <li>{{player}}</li>
+                {{/lineups.home_team.starting_lineups}}
+              </ul>
+              <ul class="away-time">
+                {{#lineups.away_team.starting_lineups}}
+                <li>{{player}}</li>
+                {{/lineups.away_team.starting_lineups}}
+              </ul>
+            </div>
+          </div>
+
+          <div class="statistics none">
+            <div class="statistics__inner">
+              <ul>
+                {{#statistics}}
+                <li class="statistics__table">
+                  <span>{{home}}</span><span>{{type}}</span
+                  ><span>{{away}}</span>
+                </li>
+                {{/statistics}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    <div class="live-wrraper"></div>
+
+    <template id="country">
+      <div
+        class="country__container"
+        style="background-image: url({{league_logo}})"
+      >
+        <strong>{{league_name}}</strong>
+      </div>
+    </template>
+    <div class="country-wrraper"></div>
+
+    <template id="liga">
+      <table class="resp-tab">
+        <thead>
+          <tr>
+            <th>место</th>
+            <th>команда</th>
+            <th>И</th>
+            <th>В</th>
+            <th>Н</th>
+            <th>П</th>
+            <th>З</th>
+            <th>П</th>
+            <th>+/-</th>
+            <th>О</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span>место в лиге</span>{{standing_place}}</td>
+            <td><span>команда</span>{{standing_team}}</td>
+            <td><span>игр</span>{{standing_P}}</td>
+            <td><span>выгр</span>{{standing_W}}</td>
+            <td><span>ничья</span>{{standing_D}}</td>
+            <td><span>проиг</span>{{standing_L}}</td>
+            <td><span>забито</span>{{standing_F}}</td>
+            <td><span>пропущ</span>{{standing_A}}</td>
+            <td><span>+/-</span>{{standing_GD}}</td>
+            <td><span>ОЧКИ</span>{{standing_PTS}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </template>
+    <div class="liga-wrraper"></div>
+
+    <template id="team">
+      <div class="team__container" style="background-image: url({{team_logo}})">
+        <h1 class="team__name">{{team_name}}</h1>
+        <h4 class="team__coach">
+          <small>тренер: </small>{{coaches.0.coach_name}}
+        </h4>
+        <div class="team__player">
+          <ul class="team__player-list">
+            {{#players}}
+            <li><img src="{{player_image}}" /></li>
+            <li><p>имя: {{player_name}}</p></li>
+            <li><p>возраст: {{player_age}}</p></li>
+            <li><p>номер: {{player_number}}</p></li>
+            <li><p>всего игр: {{player_match_played}}</p></li>
+            <li><p>забил: {{player_goals}}</p></li>
+            <li><p>желтых: {{player_yellow_cards}}</p></li>
+            <li><p>красных: {{player_red_cards}}</p></li>
+            <li><p>позиция: {{player_type}}</p></li>
+            {{/players}}
+          </ul>
+        </div>
+      </div>
+    </template>
+    <div class="team-wrapper"></div>
+
+    <script src="./js/mustache.min.js"></script>
+    <script src="./js/live.js"></script>
+    <script src="./js/hamb.js"></script>
+
+    <script src="./js/google-translate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
   </body>
 </html>

@@ -1,0 +1,189 @@
+.live-wrraper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 20px;
+}
+.live__container {
+  position: relative;
+  padding: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  transition: color 10s;
+}
+
+.live__container:hover {
+  box-shadow: 0px 1px 16px 0px rgba(0, 255, 255, 0.7),
+    1px 2px 8px 0px rgba(0, 255, 255, 0.7),
+    2px 4px 8px 0px rgba(0, 255, 255, 0.7),
+    2px 4px 16px 0px rgba(0, 255, 255, 0.7),
+    inset 0px 1px 16px 0px rgba(0, 255, 255, 0.7),
+    inset 1px 2px 8px 0px rgba(0, 255, 255, 0.7),
+    inset 2px 4px 8px 0px rgba(0, 255, 255, 0.7),
+    inset 2px 4px 16px 0px rgba(0, 255, 255, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.7);
+  transition: all 5s;
+  z-index: 50;
+}
+
+.live__container::before,
+.live__container::after {
+  box-sizing: inherit;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-origin: center;
+}
+
+.live__container::before {
+  border-top: 1px solid rgba(0, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.7);
+  transform: scale3d(0, 1, 1);
+}
+
+.live__container::after {
+  border-left: 1px solid rgba(0, 255, 255, 0.7);
+  border-right: 1px solid rgba(0, 255, 255, 0.7);
+  transform: scale3d(1, 0, 1);
+}
+.live__container:hover::before,
+.live__container:hover::after {
+  transform: scale3d(1, 1, 1);
+  transition: transform 1s;
+}
+
+.title-box {
+  margin: 25px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+}
+
+.title-box #goals {
+  font-size: 1.5em;
+}
+.team {
+  width: 100px;
+  z-index: 90;
+}
+.team img {
+  overflow: hidden;
+  height: 54px;
+  width: 54px;
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+
+.match-table {
+  background: #222232;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.1),
+    3px 3px 10px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.custom-btn {
+  width: 150px;
+  height: 40px;
+  background: linear-gradient(90deg, #f2627c 0%, #ff7f68 100%);
+  box-shadow: 0px 4px 20px rgba(249, 113, 114, 0.15);
+  border-radius: 30px;
+  border: none;
+  text-shadow: none;
+  cursor: pointer;
+  margin-bottom: 15px;
+  z-index: 90;
+}
+
+.league__header {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  gap: 15px;
+  padding: 5px;
+  font-size: 1em;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.1),
+    10px 10px 10px 0px rgba(0, 0, 0, 1), 4px 4px 5px 0px rgba(0, 0, 0, 1);
+  background: #222232;
+  border-radius: 5px;
+}
+
+.league__header img {
+  overflow: hidden;
+  height: 34px;
+  min-width: 34px;
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 90;
+}
+
+.country {
+  cursor: pointer;
+  z-index: 90;
+}
+
+.none {
+  display: none;
+}
+
+
+
+.lineup__inner {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lineup__inner li {
+  padding: 10px;
+}
+
+.statistics__table {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.goalscorers__inner {
+  display: flex;
+  justify-content: space-around;
+}
+
+.goalscorers__inner li {
+  padding: 10px;
+}
+
+@media (max-width: 500px) {
+  .live-wrraper {
+    display: block;
+    font-size: 14px;
+  }
+}

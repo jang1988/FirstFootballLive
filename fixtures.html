@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Календарь</title>
+
+  <head>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <!--Отключение Google FloC-->
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/fixtures.css" />
+    <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
+  </head>
+
+  <body>
+    <header class="header">
+      <nav class="language">
+        <img
+          src="./images/lang/ru.png"
+          alt="ru"
+          data-google-lang="ru"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/usa.png"
+          alt="en"
+          data-google-lang="en"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/ger.png"
+          alt="de"
+          data-google-lang="de"
+          class="language__img"
+        />
+        <!-- <img
+          src="./images/lang/lang__fr.png"
+          alt="fr"
+          data-google-lang="fr"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__pt.png"
+          alt="pt"
+          data-google-lang="pt"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__es.png"
+          alt="es"
+          data-google-lang="es"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__it.png"
+          alt="it"
+          data-google-lang="it"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__zh.png"
+          alt="zh"
+          data-google-lang="zh-CN"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__ar.png"
+          alt="ar"
+          data-google-lang="ar"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__nl.png"
+          alt="nl"
+          data-google-lang="nl"
+          class="language__img"
+        />
+        <img
+          src="./images/lang/lang__sv.png"
+          alt="sv"
+          data-google-lang="sv"
+          class="language__img"
+        /> -->
+      </nav>
+      <div class="header__top">
+        <nav class="hamb">
+          <div class="hamb__field" id="hamb">
+            <span class="bar"></span> <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+        <nav>
+          <ul class="menu">
+            <li class="menu__item">
+              <a class="menu__link" href="fixtures.html">Календарь игр</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="index.html"
+                >Играют сейчас</a
+              >
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="liga.html">Лиги</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Команды</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Игроки</a>
+            </li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Команды</a>
+            </li>
+            <li class="menu__item"><a class="menu__link" href="#">Шансы</a></li>
+            <li class="menu__item">
+              <a class="menu__link" href="#">Вероятности</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+      <div class="popup" id="popup"></div>
+    </header>
+
+    <div class="calendar__wrapper">
+      <div class="date-current">
+        <p id="date"></p>
+        <p id="month"></p>
+        <p id="year"></p>
+      </div>
+      <button class="calendar-btn">Календарь</button>
+    </div>
+    
+    <div id="month-calendar" class="hidden">
+      <ul class="month">
+        <li class="prev">&lt</li>       
+        <li class="month-name"></li>
+        <li class="year-name"></li>
+        <li class="next">&gt</li>
+      </ul>
+
+      <ul class="weekdays">
+        <li>Пн</li>
+        <li>Вт</li>
+        <li>Ср</li>
+        <li>Чт</li>
+        <li>Пт</li>
+        <li>Сб</li>
+        <li>Вс</li>
+      </ul>
+
+      <ul class="days"></ul>
+    </div>
+
+    <template id="fixtures">
+      <div class="match-content">
+        <div class="team__inner">
+          <div class="team">
+            <img id="homeLogo" src="{{home_team_logo}}" />
+            <p id="homeName">{{event_home_team}}</p>
+          </div>
+          <span>VS</span>
+          <div class="team">
+            <img id="awayLogo" src="{{away_team_logo}}" />
+            <p id="awayName">{{event_away_team}}</p>
+          </div>
+        </div>
+
+        <div class="popup-fixtures">
+          <p class="status"><span>начало : </span> {{event_time}}</p><hr>
+          <p class="status"><span>лига : </span> {{league_name}}</p><hr>
+          <p class="status"><span>страна : </span> {{country_name}}</p><hr>
+          <p class="status"><span>раунд : </span> {{league_round}}</p><hr>
+          <p class="status"><span>результат : </span> {{event_final_result}}</p><hr>
+          <p class="status"><span>статус : </span> {{event_status}}</p><hr>
+          <p class="status"><span>стадион : </span> {{event_stadium}}</p><hr>
+        </div>
+      </div>
+    </template>
+    <div class="fixtures-wrraper"></div>
+
+    <script src="./js/mustache.min.js"></script>
+    <script src="./js/hamb.js"></script>
+    <script src="./js/calendar.js"></script>
+    <script src="./js/fixtures.js"></script>
+
+    <script src="./js/google-translate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=TranslateInit"></script>
+  </body>
+</html>

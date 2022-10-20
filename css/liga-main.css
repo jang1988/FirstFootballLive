@@ -1,0 +1,15 @@
+.liga-main-wrraper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.liga {
+  width: 100px;
+}
+
+.liga img {
+  width: 50px;
+}
