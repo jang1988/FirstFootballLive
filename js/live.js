@@ -4,8 +4,12 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
   .then((response) => response.json())
   .then((response) => {
     const matchList = response.result;
+    const matchError = response.error;
     console.log('matchList: ', matchList);
-
+    if (matchError == 1) {
+      document.querySelector('#alarm-box').classList.remove('hidden')
+      console.log(document.querySelector('#alarm-box'))
+    }
     const templateContent = document.querySelector('#live').innerHTML;
     const liveWrraper = document.querySelector('.live-wrraper');
 
