@@ -1,0 +1,43 @@
+.team-wrapper {
+  width: 100%;
+}
+
+.team__container {
+  padding: 10px;
+  margin: 0 20px;
+  background-repeat: no-repeat;
+  
+}
+
+.team__player {
+  margin-top: 50px;
+  
+}
+
+.team__player-list img{
+  margin-top: 40px;
+}
+
+@media (min-width: 1900px) {
+  .team__player-list {
+    column-count: 5;
+  }
+}
+
+@media (max-width: 1500px) {
+  .team__player-list {
+    column-count: 4;
+  }
+}
+
+@media (max-width: 1000px) {
+  .team__player-list {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .team__player-list {
+    column-count: 2;
+  }
+}

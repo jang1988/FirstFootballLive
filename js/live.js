@@ -7,8 +7,8 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
     const matchError = response.error;
     console.log('matchList: ', matchList);
     if (matchError == 1) {
-      document.querySelector('#alarm-box').classList.remove('hidden')
-      console.log(document.querySelector('#alarm-box'))
+      document.querySelector('#alarm-box').classList.remove('hidden');
+      console.log(document.querySelector('#alarm-box'));
     }
     const templateContent = document.querySelector('#live').innerHTML;
     const liveWrraper = document.querySelector('.live-wrraper');
@@ -62,6 +62,7 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
   .then((response) => {
     const imgLogo = document.querySelectorAll('.ligaLogo');
     const countryLogo = document.querySelectorAll('.country');
+    const teamLogo = document.querySelectorAll('.team');
 
     countryLogo.forEach((logocount) => {
       logocount.addEventListener('click', showCountry);
@@ -69,6 +70,10 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
 
     imgLogo.forEach((logoLiga) => {
       logoLiga.addEventListener('click', showLiga);
+    });
+
+    teamLogo.forEach((team) => {
+      team.addEventListener('click', showTeam);
     });
 
     function showCountry() {
@@ -80,10 +85,10 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
         .then((response) => response.json())
         .then((response) => {
           console.log('response: ', response.result);
-          document.querySelector('.live-wrraper').innerHTML = ''
+          document.querySelector('.live-wrraper').innerHTML = '';
 
-          let countryContent = document.querySelector('#country').innerHTML
-          let countryWrraper = document.querySelector('.country-wrraper')
+          let countryContent = document.querySelector('#country').innerHTML;
+          let countryWrraper = document.querySelector('.country-wrraper');
 
           response.result.forEach((match) => {
             let html = Mustache.render(countryContent, match);
@@ -100,24 +105,45 @@ fetch(`https://apiv2.allsportsapi.com/football/?met=Livescore&APIkey=${key}`)
       )
         .then((response) => response.json())
         .then((response) => {
-          const total = response.result.total
-          console.log('total: ', total)
-          document.querySelector('.live-wrraper').innerHTML = ''
+          const total = response.result.total;
+          console.log('total: ', total);
+          document.querySelector('.live-wrraper').innerHTML = '';
 
-          let teamContent = document.querySelector('#team').innerHTML
-          let teamWrraper = document.querySelector('.team-wrraper')
+          let ligaContent = document.querySelector('#liga').innerHTML;
+          let ligaWrraper = document.querySelector('.liga-wrraper');
 
           total.forEach((team) => {
+            let html = Mustache.render(ligaContent, team);
+            ligaWrraper.insertAdjacentHTML('beforeend', html);
+          });
+        });
+    }
+
+    function showTeam() {
+      const teamId = this.firstElementChild.dataset.teamId;
+      fetch(
+        `https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=${teamId}&APIkey=${key}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          console.log('response: ', response.result[0].coaches[0].coach_name)
+          const teamStat = response.result
+          document.querySelector('.live-wrraper').innerHTML = '';
+
+          let teamContent = document.querySelector('#team').innerHTML;
+          let teamWrraper = document.querySelector('.team-wrapper');
+
+          teamStat.forEach((team) => {
+            console.log('team: ', team)
             let html = Mustache.render(teamContent, team);
             teamWrraper.insertAdjacentHTML('beforeend', html);
           });
         });
     }
 
-    return response
+    return response;
   })
   .then((response) => {
-    console.log('response: ', response)
-
+    console.log('response: ', response);
   })
   .catch((err) => console.error(err));

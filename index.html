@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./css/live.css" />
     <link rel="stylesheet" href="./css/card.css" />
     <link rel="stylesheet" href="./css/liga.css" />
+    <link rel="stylesheet" href="./css/team-stat.css" />
     <link rel="shortcut icon" type="image/png" href="./images/icon.png" />
   </head>
 
@@ -157,14 +158,22 @@
 
         <div class="title-box">
           <div class="team">
-            <img id="homeLogo" src="{{home_team_logo}}" />
+            <img
+              id="homeLogo"
+              src="{{home_team_logo}}"
+              data-team-id="{{home_team_key}}"
+            />
             <p id="homeName">{{event_home_team}}</p>
           </div>
 
           <p id="goals">{{event_final_result}}</p>
 
           <div class="team">
-            <img id="awayLogo" src="{{away_team_logo}}" />
+            <img
+              id="awayLogo"
+              src="{{away_team_logo}}"
+              data-team-id="{{away_team_key}}"
+            />
             <p id="awayName">{{event_away_team}}</p>
           </div>
         </div>
@@ -236,12 +245,12 @@
         class="country__container"
         style="background-image: url({{league_logo}})"
       >
-        <p>{{league_name}}</p>
+        <strong>{{league_name}}</strong>
       </div>
     </template>
     <div class="country-wrraper"></div>
 
-    <template id="team">
+    <template id="liga">
       <table class="resp-tab">
         <thead>
           <tr>
@@ -273,7 +282,32 @@
         </tbody>
       </table>
     </template>
-    <div class="team-wrraper"></div>
+    <div class="liga-wrraper"></div>
+
+    <template id="team">
+      <div class="team__container" style="background-image: url({{team_logo}})">
+        <h1 class="team__name">{{team_name}}</h1>
+        <h4 class="team__coach">
+          <small>тренер: </small>{{coaches.0.coach_name}}
+        </h4>
+        <div class="team__player">
+          <ul class="team__player-list">
+            {{#players}}
+            <li><img src="{{player_image}}" /></li>
+            <li><p>имя: {{player_name}}</p></li>
+            <li><p>возраст: {{player_age}}</p></li>
+            <li><p>номер: {{player_number}}</p></li>
+            <li><p>всего игр: {{player_match_played}}</p></li>
+            <li><p>забил: {{player_goals}}</p></li>
+            <li><p>желтых: {{player_yellow_cards}}</p></li>
+            <li><p>красных: {{player_red_cards}}</p></li>
+            <li><p>позиция: {{player_type}}</p></li>
+            {{/players}}
+          </ul>
+        </div>
+      </div>
+    </template>
+    <div class="team-wrapper"></div>
 
     <script src="./js/mustache.min.js"></script>
     <script src="./js/live.js"></script>

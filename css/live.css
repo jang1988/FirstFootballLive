@@ -73,6 +73,7 @@
 }
 .team {
   width: 100px;
+  z-index: 90;
 }
 .team img {
   overflow: hidden;
@@ -154,10 +155,15 @@
   display: none;
 }
 
+
+
 .lineup__inner {
   display: flex;
   justify-content: space-around;
-  padding: 20px;
+}
+
+.lineup__inner li {
+  padding: 10px;
 }
 
 .statistics__table {
